@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/05/30 19:07:08 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/05/30 19:08:45 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	ft_printf(const char *str, ...)
 
 	va_start(ap, str);
 	type = va_arg(ap, char *);
-	test pour jojo
 	va_end(ap);
 }
 
@@ -28,4 +27,4 @@ int	ft_printf(const char *str, ...)
 * on test si formatage est ok
 * si argument est ok
 * on envoie dans les differentes fonctions pour preparer l'argument
-* on imprimme l'argument 
+* on imprimme l'argument
