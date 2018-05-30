@@ -6,14 +6,14 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/05/30 14:42:59 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/05/30 19:07:09 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF
 # define FT_PRINTF
 
-#include "libft.h"
-
+# include "libft.h"
+# include <stdarg.h>
 
 #endif
