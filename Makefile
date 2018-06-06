@@ -6,38 +6,35 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/01/07 15:07:57 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/06/06 18:41:09 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #/******************* DIRECTORIES *******************/
 SRC_PATH =	src
 OBJ_PATH =	obj
-INC_PATH =	include \
-		  	libft
+INC_PATH =	include
+LIB_PATH =	lib
 
 #/******************* COMPILATION *******************/
-CC =		gcc
-CFLAGS =	-Wall -Werror -Wextra
-
-#/********************* PREFIXES ********************/
-LIBFT =		-Llibft/ -lft
+CC =			gcc
+CFLAGS =		-Wall -Werror -Wextra
 
 #/********************** BINARY *********************/
-NAME =		fillit
+NAME =		ft_printf
 
 #/********************** SOURCE *********************/
-SRC =		fillit.c \
-			ft_file.c \
-			ft_init.c \
-			ft_solve.c \
-			ft_utils.c
+SRC =		main.c					\
+		ft_printf.c \
+		read_str.c
 
 OBJ =		$(SRC:.c=.o)
+LIBNAME =	libft/libft.a
 
 #/********************** PATH  *********************/
-LIBP = 		$(addprefix -L, $(LIBNAME)/)
+LIBP = 		$(addprefix $(LIB_PATH)/,$(LIBNAME))
 OBJP =		$(addprefix $(OBJ_PATH)/,$(OBJ))
+SRCP =		$(addprefix $(SRC_PATH)/,$(SRC))
 INCP =		$(foreach dir, $(INC_PATH), -I$(dir))
 
 
@@ -48,20 +45,19 @@ all : $(NAME)
 
 
 $(NAME) : $(OBJP)
-	make -C ./libft
-	$(CC) $(INCP) $(LIBFT) -o $@ $^
+	make -C $(LIB_PATH)/libft
+	$(CC) -o $@ $^ $(LIBP)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	mkdir $(OBJ_PATH) 2> /dev/null || true
-	$(CC) $(CFLAGS) -o $@ -c $^ $(INCP)
-
+	$(CC) $(CFLAGS) -o $@ -c $^ $(INCP) -g
 clean :
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_PATH) 2 /dev/null || true
-	make clean -C libft/
+	make clean -C $(LIB_PATH)/libft
 
 fclean : clean
 	rm -rf $(NAME)
-	make fclean -C libft/
+	make fclean -C $(LIB_PATH)/libft
 
 re: fclean all
