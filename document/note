@@ -1,0 +1,27 @@
+Gestion du buffer et du retour de nombre de caracteres lus :
+
+creer un buffer de taille BUFF_SIZE
+
+Quand lire : 
+	- buffer rempli 
+	- on arrive a %*
+	- on arrive a la fin de str
+	
+Quand savoir quand le buffer est rempli ? 
+	- Compteur qui lorsque que = BUFF_SIZE envoie fonction lecture / clean / remise compteur a 0
+	
+Quand on lit un % : 
+	- si % apres, on avance de 2 cran sur str et on rentre un % dans buff
+
+Quand on arrive a la fin de str 
+	- On imprime buff
+
+
+	
+
+Gestion des fonctions : 
+
+	la fonction principale va lire str et modifier sa position dans la memoire. 
+	a la fin de la fonction = str commence sur un % ou str est null
+	
+	
