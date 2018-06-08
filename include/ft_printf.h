@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/06 19:48:39 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/08 15:05:48 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct		s_buff
 }					t_buff;
 
 int		ft_printf(const char *str, ...);
-void	read_str(char *str, t_buff *buff);
+int		read_str(char **str, t_buff *buff);
 void	write_buffer(t_buff *buff);
 
 #endif

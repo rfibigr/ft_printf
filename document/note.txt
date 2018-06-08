@@ -24,4 +24,4 @@ Gestion des fonctions :
 	la fonction principale va lire str et modifier sa position dans la memoire. 
 	a la fin de la fonction = str commence sur un % ou str est null
 	
-	
+	Un fonction lecture / clean / incrementation du nombre de caracteres lu

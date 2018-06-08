@@ -1,33 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/06 18:12:57 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/08 15:38:41 by rfibigr          ###   ########.fr       */
+/*   Created: 2018/06/08 16:50:15 by rfibigr           #+#    #+#             */
+/*   Updated: 2018/06/08 17:26:17 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../lib/libft/include/libft.h"
 #include <stdio.h>
 
-int main(int argc, char const *argv[]) {
-	int i;
-	int j;
-	(void)argc;
-	ft_putstr("FT_PRINTF] ");
-	i = ft_printf(argv[1], 1);
-	ft_putchar('|');
-	ft_putnbr(i);
-	ft_putchar('\n');
-	ft_putendl("---------------------------------------");
-	ft_putstr("PRINTF] ");
-	j = printf(argv[1]);
-	ft_putchar('|');
-	ft_putnbr(j);
-	ft_putchar('\n');
-
+int main() {
+	printf("%%-10d = %-10d\n", 123);
+	printf("%%10-d = %.1d", 123);
 	return 0;
 }

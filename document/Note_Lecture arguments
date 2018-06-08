@@ -1,0 +1,80 @@
+arguments possible
+
+% [flag][min width][precision][lenght modifier][conversion specifier]
+
+
+
+Convertion
+
+s		chaine de caracteres const char fini par un /0
+		si precision on s'arrete a la precision
+		si precision superieur ou pas de precision on s'arrete a /0
+
+		si l est present : const wchar t * + detail a regarder
+
+S		synonyme pour ls
+
+p		void * p est imprimme en hexadecimal comme %#x ou %#lx
+
+d / i	int argument converted to signed decimal notation
+		si la convertion necessite moins de chiffre.
+		padded to the left with 0
+		par defaut precision de 1
+		si 0 est imprimme avec la precision 0 la sortie et vide
+
+D		??
+
+o		unisgned int  / converted to unsigned octal
+
+O
+
+u		unsigned int	/ converted to unsigned decimal
+
+U
+
+x		unsigned int / converted to unigned hexadecimal
+
+X	 	unsigned int / converted to unigned hexadecimal
+
+c		int argument converted to unsigned char
+
+C		lc wint_t converted to a multibyte sequence by a call to wcrtomb
+
+
+
+Flags
+
+#
+
+0		0 padded
+		si 0 et - le 0 est ignore
+		si precision avec d i o u x X le flag est ignore
+		pour les autres/ indefini
+
+-		ajuster a guahce dans le champs
+		padded on right with blank
+		si - pas de 0
+
++		mettre un signe
+		si plus pas d'espaces
+
+' '		un esapce doit etre laisse dans un signe positif (ou string vide)
+
+Flags
+
+hh		la converstion correspond a un signed char ou unsigned wchar
+		ou la convertion n suivant correspond a un argument pointeur sur un short wint_t
+
+
+h
+
+l
+
+ll
+
+j
+
+z
+
+Precision
+taille du champs
