@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:50:15 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/08 17:26:17 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/12 17:17:54 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 #include <stdio.h>
 
 int main() {
-	printf("%%-10d = %-10d\n", 123);
-	printf("%%10-d = %.1d", 123);
+	int a;
+	a = printf("%%-10d = %lllx\n", 123);
+	ft_putchar('\n');
+	ft_putnbr(a);
 	return 0;
 }

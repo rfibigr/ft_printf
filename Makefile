@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/06/06 18:41:09 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/06/12 16:11:45 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ NAME =		ft_printf
 #/********************** SOURCE *********************/
 SRC =		main.c					\
 		ft_printf.c \
-		read_str.c
+		read_str.c	\
+		verif_form.c \
+		printf_param.c
 
 OBJ =		$(SRC:.c=.o)
 LIBNAME =	libft/libft.a
