@@ -6,9 +6,10 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/06/12 16:11:45 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/06/13 14:39:55 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+.PHONY: all, clean, fclean, re
 
 #/******************* DIRECTORIES *******************/
 SRC_PATH =	src
@@ -63,3 +64,7 @@ fclean : clean
 	make fclean -C $(LIB_PATH)/libft
 
 re: fclean all
+
+debug : $(OBJP)
+	make -C $(LIB_PATH)/libft
+	$(CC) -fsanitize=address -g3 $^ $(LIBP) -o $(NAME)

@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/12 17:03:29 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/13 15:10:48 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,26 @@ void	verif_precision(char **str, t_param *param)
 
 void	verif_lmodifier(char **str, t_param *param)
 {
-	while (LMODIFIER(**str))
+	if (**str == 'h' && *(*str + 1) != 'h')
+		param->lmodifier[e_modif_h] = TRUE;
+	else if (**str == 'h' && *(*str + 1) == 'h')
 	{
-		if (**str == 'h' && **str + 1 != 'h')
-			param->lmodifier[e_modif_h] = TRUE;
-		else if (**str == 'h' && **str + 1 == 'h')
-		{
-			param->lmodifier[e_modif_hh] = TRUE;
-			ft_putstr("WTF");
-		}
-		else if (**str == 'l' && **str + 1 != 'l')
-			param->lmodifier[e_modif_l] = TRUE;
-		else if (**str == 'l' && **str + 1 == 'l')
-			param->lmodifier[e_modif_ll] = TRUE;
-		else if (**str == 'j' && **str + 1 != 'j')
-			param->lmodifier[e_modif_j] = TRUE;
-		else if (**str == 'z' && **str + 1 != 'z')
-			param->lmodifier[e_modif_z] = TRUE;
+		param->lmodifier[e_modif_hh] = TRUE;
 		*str = *str + 1;
 	}
+	else if (**str == 'l' && *(*str + 1) != 'l')
+		param->lmodifier[e_modif_l] = TRUE;
+	if (**str == 'l' && *(*str + 1) == 'l')
+	{
+		ft_putendl("HELLLLLLLO");
+		param->lmodifier[e_modif_ll] = TRUE;
+		*str = *str + 1;
+	}
+	if (**str == 'j')
+		param->lmodifier[e_modif_j] = TRUE;
+	if (**str == 'z')
+		param->lmodifier[e_modif_z] = TRUE;
+	*str = *str + 1;
 }
 
 void	verif_conversion(char **str, t_param *param)

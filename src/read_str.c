@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/12 17:13:20 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/13 15:01:57 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 //on lit jusqu'a % ou BUFF full et on copie dans BUFF.
 //Interet de  mettre la fonction en int ? a verifier dans la structure de ft_printf
-int		read_str(char **str, t_buff *buff)
+int		read_str(char **str, t_buff *buff, t_param *param)
 {
 	int		i;
 
@@ -27,8 +27,9 @@ int		read_str(char **str, t_buff *buff)
 			if (**str != '%')
 			{
 				write_buffer(buff);
-				verif_form(str);
-				return(1);
+				if(!(verif_form(str, param)))
+					return (0);
+				return (1);
 			};
 		}
 		(buff->str)[i] = **str;
@@ -37,17 +38,18 @@ int		read_str(char **str, t_buff *buff)
 		if (i == BUFF_SIZE)
 		{
 			write_buffer(buff);
-			i = 0;
+			i = 0;;
 		}
 	}
 	write_buffer(buff);
-	return(0);
+	return (1);
 }
 
 void	write_buffer(t_buff *buff)
 {
 	buff->size += write(1, &(buff->str), ft_strlen(buff->str));
 	ft_bzero(buff->str, BUFF_SIZE);
+	//i dans la fonction pour norme
 }
 
 void	initial_param(t_param *param)
@@ -68,22 +70,23 @@ void	initial_param(t_param *param)
 	param->width = 0;
 }
 
-void	verif_form(char **str)
+int		verif_form(char **str, t_param *param)
 {
-	t_param param;
-
-	initial_param(&param);
+	initial_param(param);
 	if (FLAG(**str))
-		verif_flag(str, &param);
+		verif_flag(str, param);
 	if (WIDTH(**str))
-		verif_min_width(str, &param);
+	// verifier si Int suffisant
+		verif_min_width(str, param);
 	if (PRECISION(**str))
-		verif_precision(str, &param);
+	//verifier si Int suffisant
+		verif_precision(str, param);
 	if (LMODIFIER(**str))
-		verif_lmodifier(str, &param);
+		verif_lmodifier(str, param);
 	if (CONVERSION(**str))
-		verif_conversion(str, &param);
+		verif_conversion(str, param);
 	else
-		ft_putendl("ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-	print_param(param);
+		return (0);
+	print_param(*param);
+	return (1);
 }

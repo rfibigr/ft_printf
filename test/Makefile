@@ -1,9 +1,9 @@
 all : printf.o
 	make -C ../lib/libft
-	gcc -o printf printf.o ../lib/libft/libft.a
+	clang -o printf printf.o ../lib/libft/libft.a
 
 printf.o : printf.c
-	gcc -c printf.c
+	clang -c printf.c
 
 clean :
 	make clean -C ../lib/libft

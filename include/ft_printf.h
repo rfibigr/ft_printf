@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/12 17:01:34 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/13 14:42:14 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,12 @@ enum	conver
 };
 
 /******** DECLARATION OF FONCTIONS ********/
+
 int		ft_printf(const char *str, ...);
-int		read_str(char **str, t_buff *buff);
+int		read_str(char **str, t_buff *buff, t_param *param);
 void	write_buffer(t_buff *buff);
 void	initial_param(t_param *param);
-void	verif_form(char **str);
+int		verif_form(char **str, t_param *param);
 void	verif_flag(char **str, t_param *param);
 void	verif_min_width(char **str, t_param *param);
 void	verif_precision(char **str, t_param *param);

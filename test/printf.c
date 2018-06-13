@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:50:15 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/12 17:17:54 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/13 16:51:13 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,42 @@
 
 int main() {
 	int a;
-	a = printf("%%-10d = %lllx\n", 123);
-	ft_putchar('\n');
+
+	ft_putendl("_________________TEST FLAG___________________");
+
+	ft_putendl("[ # ]");
+
+	a = printf("%%#o | 12345 =%#o \n", 12345);
 	ft_putnbr(a);
+	ft_putchar ('\n');
+	a = printf("%%o | 12345 =%o \n", 12345);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+
+	a = printf("%%#x | ef20abc =%#x \n", 0xef20bc);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+	a = printf("%%x | ef20abc =%x \n", 0xef20bc);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+
+
+	a = printf("%%#X | EF20ABC =%#X \n", 0XEF20ABC);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+	a = printf("%%X | EF20ABC =%X \n", 0XEF20ABC);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+
+	ft_putendl("[ 0 ]");
+
+	a = printf("%%04d | 123456789 =%04d \n", 123456789);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+
+	a = printf("%%011d | 123456789 =%-111d \n", 123456789);
+	ft_putnbr(a);
+	ft_putchar ('\n');
+
 	return 0;
 }
