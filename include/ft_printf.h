@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/13 14:42:14 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/15 14:57:09 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 /******** DEFINE ********/
 # define BUFF_SIZE 10
 /* Number of argument for differents parameter */
-# define CONVER_NUMBER 13
 # define FLAG_NUMBER 5
-# define MODIF_NUMBER 6
 # define TRUE 1
 # define FLASE 0
 /*** test caracteres after % ***/
@@ -45,8 +43,8 @@ typedef struct		s_buff
 typedef struct		s_param
 {
 		int		flag[FLAG_NUMBER];
-		int		lmodifier[MODIF_NUMBER];
-		int		conver[CONVER_NUMBER];
+		int		lmodifier;
+		char	conver;
 		int		precision;
 		int		width;
 }					t_param;

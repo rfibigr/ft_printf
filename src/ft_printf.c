@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/13 14:24:43 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/15 14:31:38 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	ft_printf(const char *str, ...)
 	buff.size = 0;
 	if (!(read_str(&str_cp, &buff, &param)))
 		return (-1);
+
 
 	va_start(ap, str);
 

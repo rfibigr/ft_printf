@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/13 15:10:48 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/06/15 14:38:00 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,31 @@ void	verif_precision(char **str, t_param *param)
 void	verif_lmodifier(char **str, t_param *param)
 {
 	if (**str == 'h' && *(*str + 1) != 'h')
-		param->lmodifier[e_modif_h] = TRUE;
+		param->lmodifier = e_modif_h;
 	else if (**str == 'h' && *(*str + 1) == 'h')
 	{
-		param->lmodifier[e_modif_hh] = TRUE;
+		param->lmodifier = e_modif_hh;
 		*str = *str + 1;
 	}
 	else if (**str == 'l' && *(*str + 1) != 'l')
-		param->lmodifier[e_modif_l] = TRUE;
+		param->lmodifier = e_modif_l;
 	if (**str == 'l' && *(*str + 1) == 'l')
 	{
-		ft_putendl("HELLLLLLLO");
-		param->lmodifier[e_modif_ll] = TRUE;
+		param->lmodifier = e_modif_ll;
 		*str = *str + 1;
 	}
 	if (**str == 'j')
-		param->lmodifier[e_modif_j] = TRUE;
+		param->lmodifier = e_modif_j;
 	if (**str == 'z')
-		param->lmodifier[e_modif_z] = TRUE;
+		param->lmodifier = e_modif_z;
 	*str = *str + 1;
 }
 
 void	verif_conversion(char **str, t_param *param)
 {
+	param->conver = **str;
+	/*
+	//changer pour mettre dans un char.
 	if (**str == 's')
 		param->conver[e_conver_s] = TRUE;
 	else if (**str == 'S')
@@ -102,5 +104,5 @@ void	verif_conversion(char **str, t_param *param)
 	else if (**str == 'c')
 		param->conver[e_conver_c] = TRUE;
 	else if (**str == 'C')
-		param->conver[e_conver_C] = TRUE;
+		param->conver[e_conver_C] = TRUE;*/
 }
