@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:50:15 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:31:38 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/17 18:16:03 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ int main() {
 
 	ft_putendl("[ # ]");
 
-	a = printf("%%#o | 12345 =%#o \n", 12345);
+	a = printf("%%#o | 8 =%#o \n", 8);
 	ft_putnbr(a);
 	ft_putchar ('\n');
-	a = printf("%%o | 12345 =%o \n", 12345);
+	a = printf("%%o | 8 =%o \n", 8);
 	ft_putnbr(a);
 	ft_putchar ('\n');
 

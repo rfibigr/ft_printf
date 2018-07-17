@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:55:36 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/17 15:53:50 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 	int		i;
 
 	i = 0;
+	initial_param(param);
 	while (**str != '\0')
 	{
 		if (**str == '%')
@@ -70,7 +71,7 @@ void	initial_param(t_param *param)
 
 int		verif_form(char **str, t_param *param)
 {
-	initial_param(param);
+//	initial_param(param);
 	if (FLAG(**str))
 		verif_flag(str, param);
 	if (WIDTH(**str))
@@ -82,9 +83,12 @@ int		verif_form(char **str, t_param *param)
 	if (LMODIFIER(**str))
 		verif_lmodifier(str, param);
 	if (CONVERSION(**str))
+	{
 		param->conver = **str;
+		*str = *str + 1;
+	}
 	else
 		return (0);
-	print_param(*param);
+	//print_param(*param);
 	return (1);
 }

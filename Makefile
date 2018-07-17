@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/06/13 14:39:55 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/07/17 15:27:27 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -29,7 +29,8 @@ SRC =		main.c					\
 		ft_printf.c \
 		read_str.c	\
 		verif_form.c \
-		printf_param.c
+		printf_param.c\
+		assign_function.c
 
 OBJ =		$(SRC:.c=.o)
 LIBNAME =	libft/libft.a

@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:57:09 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/17 15:23:01 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 # define CONVERSION(a) ((a == 's' || a == 'S' || a == 'p' || a == 'd'\
 					|| a == 'D' || a == 'o' || a == 'O' || a == 'u'\
 					|| a == 'U' || a == 'x' || a == 'X' || a == 'c'\
-					|| a == 'c') ? 1 : 0)
+					|| a == 'C') ? 1 : 0)
 /******** DATA STRUCT ********/
 typedef struct		s_buff
 {
@@ -98,5 +98,5 @@ void	verif_precision(char **str, t_param *param);
 void	verif_lmodifier(char **str, t_param *param);
 void	verif_conversion(char **str, t_param *param);
 void	print_param(t_param param);
-
+void	assign_function(va_list ap, t_param param);
 #endif

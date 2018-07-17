@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:38:00 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/17 15:40:16 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	verif_lmodifier(char **str, t_param *param)
 void	verif_conversion(char **str, t_param *param)
 {
 	param->conver = **str;
+	*str = *str + 1;
 	/*
 	//changer pour mettre dans un char.
 	if (**str == 's')

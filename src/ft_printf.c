@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:31:38 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/17 15:49:16 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	ft_printf(const char *str, ...)
 
 	str_cp = ft_strdup(str);
 	buff.size = 0;
-	if (!(read_str(&str_cp, &buff, &param)))
-		return (-1);
-
-
 	va_start(ap, str);
+	while (*str_cp != '\0')
+	{
+		if (!(read_str(&str_cp, &buff, &param)))
+			return (-1);
+		assign_function(ap, param);
+	}
 
 	//type = va_arg(ap, char *);
 	va_end(ap);
