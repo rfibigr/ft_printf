@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/17 15:40:16 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/20 10:12:24 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	verif_flag(char **str, t_param *param)
 			param->flag[e_flag_space] = TRUE;
 		*str = *str + 1;
 	}
+	if (param->flag[e_flag_less])
+		param->flag[e_flag_zero] = FALSE;
+	if (param->flag[e_flag_more])
+		param->flag[e_flag_space] = FALSE;
+
 }
 
 void	verif_min_width(char **str, t_param *param)
@@ -44,11 +49,14 @@ void	verif_precision(char **str, t_param *param)
 	// On avance apres le point
 	*str = *str + 1;
 	// On lit tant que str et tant que chiffre
+	param->precision = 0;
 	while (WIDTH(**str))
 	{
 		param->precision = param->precision * 10 + ((**str - 48)%10);
 		*str = *str + 1;
 	}
+	if (param->precision >= 0)
+		param->flag[e_flag_zero] = FALSE;
 }
 
 void	verif_lmodifier(char **str, t_param *param)
@@ -78,32 +86,10 @@ void	verif_conversion(char **str, t_param *param)
 {
 	param->conver = **str;
 	*str = *str + 1;
-	/*
-	//changer pour mettre dans un char.
-	if (**str == 's')
-		param->conver[e_conver_s] = TRUE;
-	else if (**str == 'S')
-		param->conver[e_conver_S] = TRUE;
-	else if (**str == 'p')
-		param->conver[e_conver_p] = TRUE;
-	else if (**str == 'd')
-		param->conver[e_conver_d] = TRUE;
-	else if (**str == 'D')
-		param->conver[e_conver_d] = TRUE;
-	else if (**str == 'o')
-		param->conver[e_conver_o] = TRUE;
-	else if (**str == 'O')
-		param->conver[e_conver_O] = TRUE;
-	else if (**str == 'u')
-		param->conver[e_conver_u] = TRUE;
-	else if (**str == 'U')
-		param->conver[e_conver_U] = TRUE;
-	else if (**str == 'x')
-		param->conver[e_conver_x] = TRUE;
-	else if (**str == 'x')
-		param->conver[e_conver_S] = TRUE;
-	else if (**str == 'c')
-		param->conver[e_conver_c] = TRUE;
-	else if (**str == 'C')
-		param->conver[e_conver_C] = TRUE;*/
+	if (param->conver == 'd')
+		param->base = 10;
+	if (param->conver == 'o')
+		param->base = 8;
+	if (param->conver == 'x' || param->conver == 'X')
+		param->base = 16;
 }

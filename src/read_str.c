@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/17 15:53:50 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/19 16:06:04 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ void	initial_param(t_param *param)
 		i++;
 	}
 	param->conver = 0;
-	param->lmodifier = 0;
-	param->precision = 0;
+	param->lmodifier = -1;
+	param->precision = -1;
 	param->width = 0;
 }
 
@@ -83,12 +83,9 @@ int		verif_form(char **str, t_param *param)
 	if (LMODIFIER(**str))
 		verif_lmodifier(str, param);
 	if (CONVERSION(**str))
-	{
-		param->conver = **str;
-		*str = *str + 1;
-	}
+		verif_conversion(str, param);
 	else
 		return (0);
-	//print_param(*param);
+	print_param(*param);
 	return (1);
 }
