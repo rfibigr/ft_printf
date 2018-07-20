@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/20 11:07:58 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/20 16:35:15 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,16 @@ typedef struct		s_param
 		int		base;
 		int		precision;
 		int		width;
+		int		sign;
 }					t_param;
+
+typedef struct		s_padding
+{
+		int		width;
+		int		precision;
+		int		sign;
+		int		size;
+}					t_padding;
 
 enum	e_flag
 {
@@ -89,9 +98,11 @@ void	print_param(t_param param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_param param);
-void	padding_before(t_param param, int size, t_buff *buff);
 int		size_nbr(int arg, t_param param);
 void	print_caract(int i, t_buff *buff, char c);
+void	itoa_base_print(int arg, t_param param, t_buff *buff);
+void	padding_struct(t_padding *padding, t_param param);
+void	padding_before(t_param param, t_padding padding, t_buff *buff);
 
 
 #endif

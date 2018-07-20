@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/19 16:06:04 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/20 16:55:29 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,28 @@
 
 void		assign_function(va_list ap, t_param param, t_buff *buff)
 {
-	modifier_hh(ap, param, buff);
+	if (param.conver == 'd')
+		modifier_hh(ap, param, buff);
 }
 
 void		modifier_hh(va_list ap, t_param param, t_buff *buff)
 {
-	int size;
+	int arg;
+	t_padding padding;
+
+	padding.sign = 0;
+	arg = va_arg(ap, int);
+	if (arg < 0 || param.flag[e_flag_more] == 1 || param.flag[e_flag_space] == 1)
+		padding.sign = 1;
 // Calcul the number of caracter to prinf to define the padding of diffrent flag
-	size = size_nbr(va_arg(ap, (short int)), t_param param);
+	padding.size = size_nbr((short int)arg, param);
+	padding_struct(&padding, param);
 	// size +1 si signe negatif(conver d) ou si flag positif
-	if (param.flag[e_flag_hashtag])
-		print_hastag(param);
-	// padding
-	print_flag_before(param, size);
-	// verif des flags et si besoin
-	verif() and print(flag)
-	itoa_base_print();
-	verif () and printf(flag)
+	padding_before(param, padding, buff);
+	ft_putnbr(arg);
+	//itoa_base_print(va_arg(ap, short int), param, buff);
+	if (param.flag[e_flag_less])
+		print_caract(padding.width, buff, ' ');
 }
 
 

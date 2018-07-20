@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/20 11:07:23 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/20 16:39:10 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,31 +20,35 @@ void	print_hastag(t_param param)
 		write(1, "0X",2);
 }
 
-void	padding_before(t_param param, int size, t_buff *buff)
+void	padding_struct(t_padding *padding, t_param param)
 {
-	int precision;
-	int width;
+	padding->width = 0;
+	padding->precision =- padding->size;
 
-	precision = param.precision - size;
-	width = param.width - size;
-
-	if (precision > 0)
-	{
-		if (precision > width)
-			print_caract(precision, buff, '0');
-		else
-		{
-			print_caract(width - precision, buff, ' ');
-			print_caract(precision, buff, '0');
-		}
-	}
-	else if (precision < 0 && width > 0)
-	{
-		param.flag[e_flag_zero] == TRUE ? print_caract(width, buff, '0') :
-		print_caract(width, buff, ' ');
-	}
+	padding->width = param.width - padding->size;
+	if (padding->precision > 0)
+		padding->width =- padding->precision;
+	if (padding->sign == -1 || param.flag[e_flag_more] == 1 || param.flag[e_flag_space] == 1)
+		padding->width =- 1;
+	if (param.flag[e_flag_hashtag] == 1)
+		padding->width =-2;
 }
-// width to display
+
+void	padding_before(t_param param, t_padding padding, t_buff *buff)
+{
+	if (padding.width > 0 && param.flag[e_flag_less] == 0)
+		param.flag[e_flag_zero] == TRUE ? print_caract(padding.width, buff, '0') :
+		print_caract(padding.width, buff, ' ');
+	if (padding.sign == -1)
+		ft_putchar('-');
+	else if (param.flag[e_flag_more] && padding.sign == 0)
+		ft_putchar('+');
+	else if (param.flag[e_flag_space] && padding.sign == 0)
+		ft_putchar(' ');
+	if (padding.precision > 0)
+		print_caract(padding.precision, buff, '0');
+}
+
 void	print_caract(int i, t_buff *buff, char c)
 {
 	int i_buffer;
