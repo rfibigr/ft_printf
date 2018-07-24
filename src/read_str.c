@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/20 17:11:47 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/24 11:50:57 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 //Interet de  mettre la fonction en int ? a verifier dans la structure de ft_printf
 int		read_str(char **str, t_buff *buff, t_param *param)
 {
-	int		i;
+	int		i_buff;
 
-	i = 0;
+	i_buff = 0;
 	initial_param(param);
 	while (**str != '\0')
 	{
@@ -27,28 +27,28 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 			*str = *str + 1;
 			if (**str != '%')
 			{
-				write_buffer(buff);
+				write_buffer(buff, i_buff);
 				if(!(verif_form(str, param)))
 					return (0);
 				return (1);
 			};
 		}
-		(buff->str)[i] = **str;
-		i++;
+		(buff->str)[i_buff] = **str;
+		i_buff++;
 		*str = *str + 1;
-		if (i == BUFF_SIZE)
+		if (i_buff == BUFF_SIZE)
 		{
-			write_buffer(buff);
-			i = 0;;
+			write_buffer(buff, i_buff);
+			i_buff = 0;;
 		}
 	}
-	write_buffer(buff);
+	write_buffer(buff, i_buff);
 	return (1);
 }
 
-void	write_buffer(t_buff *buff)
+void	write_buffer(t_buff *buff, int i_buff)
 {
-	buff->size += write(1, &(buff->str), BUFF_SIZE);
+	buff->size += write(1, &(buff->str), i_buff);
 	ft_bzero(buff->str, BUFF_SIZE);
 	//i dans la fonction pour norme
 }
@@ -87,5 +87,6 @@ int		verif_form(char **str, t_param *param)
 	else
 		return (0);
 //	print_param(*param);
+//print_param(*param);
 	return (1);
 }

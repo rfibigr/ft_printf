@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 15:58:39 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/06/15 14:32:44 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/24 11:40:08 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,37 @@ void	print_param(t_param param)
 		ft_putnbr(i);
 		ft_putstr("] = ");
 		ft_putchar(param.conver);
+		ft_putchar('\n');
+}
+
+#include "ft_printf.h"
+
+void	print_padding(t_padding *padding)
+{
+
+		ft_putchar('\n');
+		ft_putchar('\n');
+	ft_putstr("width [");
+	ft_putnbr(padding->width);
+	ft_putstr("]");
+	ft_putchar('\n');
+	ft_putchar('\n');
+
+	ft_putstr("precision[");
+	ft_putnbr(padding->precision);
+	ft_putstr("]");
+	ft_putchar('\n');
+	ft_putchar('\n');
+
+		ft_putstr("sign[");
+		ft_putnbr(padding->sign);
+		ft_putstr("]");
+		ft_putchar('\n');
+		ft_putchar('\n');
+
+		ft_putstr("size[");
+		ft_putnbr(padding->size);
+		ft_putstr("]");
+		ft_putchar('\n');
 		ft_putchar('\n');
 }

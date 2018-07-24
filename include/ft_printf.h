@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/20 16:35:15 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/24 14:40:32 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <unistd.h>
+#include <stdio.h>
 
 /******** DEFINE ********/
 
 # define BUFF_SIZE 10
 /* Number of argument for differents parameter */
 # define FLAG_NUMBER 5
+# define BASE_SIZE 16
 # define TRUE 1
 # define FALSE 0
 /*** test caracteres after % ***/
@@ -86,7 +88,7 @@ enum	e_modifier
 
 int		ft_printf(const char *str, ...);
 int		read_str(char **str, t_buff *buff, t_param *param);
-void	write_buffer(t_buff *buff);
+void	write_buffer(t_buff *buff, int i_buff);
 void	initial_param(t_param *param);
 int		verif_form(char **str, t_param *param);
 void	verif_flag(char **str, t_param *param);
@@ -94,15 +96,22 @@ void	verif_min_width(char **str, t_param *param);
 void	verif_precision(char **str, t_param *param);
 void	verif_lmodifier(char **str, t_param *param);
 void	verif_conversion(char **str, t_param *param);
-void	print_param(t_param param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_param param);
 int		size_nbr(int arg, t_param param);
 void	print_caract(int i, t_buff *buff, char c);
-void	itoa_base_print(int arg, t_param param, t_buff *buff);
+void	itoa_base_print(int arg, t_param *param, t_buff *buff);
 void	padding_struct(t_padding *padding, t_param param);
 void	padding_before(t_param param, t_padding padding, t_buff *buff);
+void	print_sign(t_buff *buff, t_param param, t_padding padding);
+
+
+
+
+void	print_param(t_param param);
+void	print_padding(t_padding *padding);
+
 
 
 #endif
