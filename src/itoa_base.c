@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 11:14:43 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 15:03:40 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/24 16:00:11 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,33 +23,29 @@ int		size_nbr(int arg, t_param param)
 		arg = arg / param.base;
 	}
 	return (i);
-	// rajouter + 2 si tag # et x ou X
 }
 
 void		itoa_base_print(int arg, t_param *param, t_buff *buff)
 {
-	// no sign
-	char charact[16] = "0123456789abcdef";
-	int i;
+	int i_case;
 
-	i = 0;
-	if (param->conver == 'X')
-		{
-			while (i < 15)
-				{
-					charact[i] =ft_toupper(charact[i]);
-					i++;
-				}
-		}
-	if (param->flag[e_flag_hashtag] == 1)
-	{
-		print_caract(1, buff, '0');
-		print_caract(1, buff, param->conver);
-		param->flag[e_flag_hashtag] = 0;
-	}
+	i_case = 0;
+	param->conver == 'x' ? i_case = 32 : 1 ;
 	if (arg < 0)
 		arg = arg * -1;
 	if (arg / param->base != 0)
 		itoa_base_print(arg / param->base, param, buff);
-	print_caract(1, buff, charact[arg % param->base]);
+	arg % param->base <= 9 ? print_caract(1, buff, arg % param->base + '0') :
+	print_caract(1, buff, (arg % param->base) + 'A' -10 + i_case);
+}
+
+void		str_upper(char **str)
+{
+	int i;
+
+	while (i < 16)
+	{
+		*str[i] = ft_toupper(*str[i]);
+		i++;
+	}
 }

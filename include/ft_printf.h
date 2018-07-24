@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 14:40:32 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/24 15:51:29 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,14 @@ void	verif_lmodifier(char **str, t_param *param);
 void	verif_conversion(char **str, t_param *param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
-void	print_hastag(t_param param);
+void	print_hastag(t_buff *buff, t_param param);
 int		size_nbr(int arg, t_param param);
 void	print_caract(int i, t_buff *buff, char c);
 void	itoa_base_print(int arg, t_param *param, t_buff *buff);
 void	padding_struct(t_padding *padding, t_param param);
 void	padding_before(t_param param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param param, t_padding padding);
+void	str_upper(char *str[16]);
 
 
 
