@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/07/20 11:03:37 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/07/26 10:17:22 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -33,6 +33,13 @@ SRC =		main.c					\
 		assign_function.c \
 		padding_before.c \
 		itoa_base.c \
+		itoa_base_l.c \
+		itoa_base_max.c \
+		itoa_base_size_t.c \
+		modifier_signed_1.c \
+		modifier_signed_2.c \
+		modifier_unsigned_1.c \
+		modifier_unsigned_2.c
 
 OBJ =		$(SRC:.c=.o)
 LIBNAME =	libft/libft.a

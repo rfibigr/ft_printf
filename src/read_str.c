@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 11:50:57 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 14:21:05 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,21 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 	return (1);
 }
 
+void	add_buffer(t_buff *buff, char c)
+{
+	(buff->str)[buff->i] = c;
+	buff->i++;
+	if (buff->i == BUFF_SIZE)
+	{
+		write_buffer(buff, BUFF_SIZE);
+		buff->i = 0;
+	}
+}
+
 void	write_buffer(t_buff *buff, int i_buff)
 {
 	buff->size += write(1, &(buff->str), i_buff);
 	ft_bzero(buff->str, BUFF_SIZE);
-	//i dans la fonction pour norme
 }
 
 void	initial_param(t_param *param)
@@ -64,7 +74,7 @@ void	initial_param(t_param *param)
 		i++;
 	}
 	param->conver = 0;
-	param->lmodifier = -1;
+	param->lmodifier = e_modif_no;
 	param->precision = -1;
 	param->width = 0;
 }
@@ -86,7 +96,6 @@ int		verif_form(char **str, t_param *param)
 		verif_conversion(str, param);
 	else
 		return (0);
-//	print_param(*param);
 //print_param(*param);
 	return (1);
 }

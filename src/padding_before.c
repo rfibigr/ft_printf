@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 15:59:39 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 10:41:30 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ void	padding_struct(t_padding *padding, t_param param)
 	padding->precision = param.precision - padding->size;
 	if (padding->precision > 0)
 		padding->width -= padding->precision;
-	if (padding->sign == -1 || param.flag[e_flag_more] == 1 || param.flag[e_flag_space] == 1)
-		padding->width -= 1;
+	if (NUMBER_SIGNED(param.conver))
+	{
+		if (padding->sign == -1 || param.flag[e_flag_more] == 1 || param.flag[e_flag_space] == 1)
+			padding->width -= 1;
+	}
 	if (param.flag[e_flag_hashtag] == 1)
 		padding->width -=2;
 }
@@ -28,7 +31,7 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 {
 	if (padding.width > 0 && param.flag[e_flag_less] == 0)
 	{
-		if (param.flag[e_flag_zero] == 1)
+		if (param.flag[e_flag_zero] == 1 && NUMBER_SIGNED(param.conver) == 1)
 			print_sign(buff, param, padding);
 		if (param.flag[e_flag_hashtag] == 1 && param.flag[e_flag_zero] == 1)
 			print_hastag(buff, param);
@@ -37,7 +40,8 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 	}
 	if (param.flag[e_flag_zero] == 0)
 	{
-		print_sign(buff, param, padding);
+		if (NUMBER_SIGNED(param.conver) == 1)
+			print_sign(buff, param, padding);
 		if(param.flag[e_flag_hashtag] == 1)
 			print_hastag(buff, param);
 	}

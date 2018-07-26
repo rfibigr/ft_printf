@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 11:37:58 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 12:44:53 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	verif_conversion(char **str, t_param *param)
 {
 	param->conver = **str;
 	*str = *str + 1;
-	if (param->conver == 'd')
+	if (param->conver == 'd' || param->conver == 'u')
 		param->base = 10;
 	else if (param->conver == 'o')
 		param->base = 8;
-	else if (param->conver == 'x' || param->conver == 'X')
+	else if (param->conver == 'x' || param->conver == 'X' || param->conver == 'p')
 		param->base = 16;
 }

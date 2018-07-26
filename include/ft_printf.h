@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/24 15:51:29 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 14:11:44 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "libft.h"
 # include <stdarg.h>
 # include <unistd.h>
+# include <inttypes.h>
 #include <stdio.h>
 
 /******** DEFINE ********/
@@ -37,6 +38,9 @@
 					|| a == 'D' || a == 'o' || a == 'O' || a == 'u'\
 					|| a == 'U' || a == 'x' || a == 'X' || a == 'c'\
 					|| a == 'C') ? 1 : 0)
+# define NUMBER_SIGNED(a) ((a == 'd' || a == 'D') ? 1 : 0)
+# define NUMBER_UNSIGNED(a) ((a == 'o' || a == 'O' || a == 'u'\
+					|| a == 'U' || a == 'x' || a == 'X') ? 1 : 0) \
 
 /******** DATA STRUCT ********/
 
@@ -44,6 +48,7 @@ typedef struct		s_buff
 {
 	char		str[BUFF_SIZE];
 	size_t		size;
+	int			i;
 }					t_buff;
 
 typedef struct		s_param
@@ -76,6 +81,7 @@ enum	e_flag
 
 enum	e_modifier
 {
+	e_modif_no,
 	e_modif_hh,
 	e_modif_h,
 	e_modif_ll,
@@ -99,15 +105,50 @@ void	verif_conversion(char **str, t_param *param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_buff *buff, t_param param);
-int		size_nbr(int arg, t_param param);
 void	print_caract(int i, t_buff *buff, char c);
-void	itoa_base_print(int arg, t_param *param, t_buff *buff);
 void	padding_struct(t_padding *padding, t_param param);
 void	padding_before(t_param param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param param, t_padding padding);
 void	str_upper(char *str[16]);
+void	print_adress(va_list ap, t_param param, t_buff *buff);
+void	print_str(va_list ap, t_buff *buff);
+void	add_buffer(t_buff *buff, char c);
+
+int		size_nbr(int arg, t_param param);
+void	itoa_base_print(int arg, t_param *param, t_buff *buff);
+int		size_l_nbr(long long int arg, t_param param);
+void	itoa_base_l_print(long long int arg, t_param *param, t_buff *buff);
+int		size_intmax_nbr(intmax_t arg, t_param param);
+void	itoa_base_intmax_print(intmax_t arg, t_param *param, t_buff *buff);
+int		size_sizet_nbr(size_t arg, t_param param);
+void	itoa_base_sizet_print(size_t arg, t_param *param, t_buff *buff);
+
+int		size_u_nbr(unsigned int arg, t_param param);
+void	itoa_base_u_print(unsigned int arg, t_param *param, t_buff *buff);
+int		size_lu_nbr(unsigned long long int arg, t_param param);
+void	itoa_base_lu_print(unsigned long long int arg, t_param *param, t_buff *buff);
+int		size_u_intmax_nbr(uintmax_t arg, t_param param);
+void	itoa_base_u_intmax_print(uintmax_t arg, t_param *param, t_buff *buff);
 
 
+void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_no(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_hh(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_h(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_l(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_ll(va_list ap, t_param param, t_buff *buff);
+void	modifier_s_j(va_list ap, t_param param, t_buff *buff);
+void	(*modifier_signed[6])(va_list, t_param, t_buff *);
+
+void	assign_unsigned_modifier(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_no(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_hh(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_h(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_l(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_ll(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_j(va_list ap, t_param param, t_buff *buff);
+void	modifier_u_z(va_list ap, t_param param, t_buff *buff);
+void	(*modifier_unsigned[6])(va_list, t_param, t_buff *);
 
 
 void	print_param(t_param param);
