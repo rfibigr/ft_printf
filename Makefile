@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/07/26 10:17:22 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/07/28 09:53:28 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -22,24 +22,25 @@ CC =			gcc
 CFLAGS =		-Wall -Werror -Wextra
 
 #/********************** BINARY *********************/
-NAME =		ft_printf
+NAME =		libftprintf.a
 
 #/********************** SOURCE *********************/
-SRC =		main.c					\
+SRC =						\
 		ft_printf.c \
 		read_str.c	\
 		verif_form.c \
 		printf_param.c\
 		assign_function.c \
 		padding_before.c \
-		itoa_base.c \
-		itoa_base_l.c \
-		itoa_base_max.c \
-		itoa_base_size_t.c \
+		print_int.c \
+		print_j.c \
+		print_l.c \
+		print_z.c \
 		modifier_signed_1.c \
 		modifier_signed_2.c \
 		modifier_unsigned_1.c \
-		modifier_unsigned_2.c
+		modifier_unsigned_2.c \
+		print_buffer.c
 
 OBJ =		$(SRC:.c=.o)
 LIBNAME =	libft/libft.a
@@ -59,7 +60,9 @@ all : $(NAME)
 
 $(NAME) : $(OBJP)
 	make -C $(LIB_PATH)/libft
-	$(CC) -o $@ $^ $(LIBP)
+	ar rc libftprintf.a $(OBJP)
+	ranlib $(NAME)
+#	$(CC) -o $@ $^ $(LIBP)
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	mkdir $(OBJ_PATH) 2> /dev/null || true

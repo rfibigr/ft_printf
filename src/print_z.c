@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 09:53:48 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 09:54:01 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 17:01:56 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int		size_sizet_nbr(size_t arg, t_param param)
 	return (i);
 }
 
-void		itoa_base_sizet_print(size_t arg, t_param *param, t_buff *buff)
+void		print_unsigned_z(size_t arg, t_param *param, t_buff *buff)
 {
 	int i_case;
 
 	i_case = 0;
 	param->conver == 'x' ? i_case = 32 : 1 ;
 	if (arg / param->base != 0)
-		itoa_base_sizet_print(arg / param->base, param, buff);
-	arg % param->base <= 9 ? print_caract(1, buff, arg % param->base + '0') :
-	print_caract(1, buff, (arg % param->base) + 'A' -10 + i_case);
+		print_unsigned_z(arg / param->base, param, buff);
+	arg % param->base <= 9 ? add_buffer(buff, arg % param->base + '0') :
+	add_buffer(buff, (arg % param->base) + 'A' -10 + i_case);
 }

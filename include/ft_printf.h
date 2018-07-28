@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 14:11:44 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 17:04:05 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ int		ft_printf(const char *str, ...);
 int		read_str(char **str, t_buff *buff, t_param *param);
 void	write_buffer(t_buff *buff, int i_buff);
 void	initial_param(t_param *param);
+void	initial_buff(t_buff *buff);
 int		verif_form(char **str, t_param *param);
 void	verif_flag(char **str, t_param *param);
 void	verif_min_width(char **str, t_param *param);
@@ -115,20 +116,20 @@ void	print_str(va_list ap, t_buff *buff);
 void	add_buffer(t_buff *buff, char c);
 
 int		size_nbr(int arg, t_param param);
-void	itoa_base_print(int arg, t_param *param, t_buff *buff);
+void	print_signed_int(int arg, t_param *param, t_buff *buff);
 int		size_l_nbr(long long int arg, t_param param);
-void	itoa_base_l_print(long long int arg, t_param *param, t_buff *buff);
+void	print_signed_l(long long int arg, t_param *param, t_buff *buff);
 int		size_intmax_nbr(intmax_t arg, t_param param);
-void	itoa_base_intmax_print(intmax_t arg, t_param *param, t_buff *buff);
+void	print_signed_j(intmax_t arg, t_param *param, t_buff *buff);
 int		size_sizet_nbr(size_t arg, t_param param);
-void	itoa_base_sizet_print(size_t arg, t_param *param, t_buff *buff);
+void	print_unsigned_z(size_t arg, t_param *param, t_buff *buff);
 
 int		size_u_nbr(unsigned int arg, t_param param);
-void	itoa_base_u_print(unsigned int arg, t_param *param, t_buff *buff);
+void	print_unsigned_int(unsigned int arg, t_param *param, t_buff *buff);
 int		size_lu_nbr(unsigned long long int arg, t_param param);
-void	itoa_base_lu_print(unsigned long long int arg, t_param *param, t_buff *buff);
+void	print_unsigned_l(unsigned long long int arg, t_param *param, t_buff *buff);
 int		size_u_intmax_nbr(uintmax_t arg, t_param param);
-void	itoa_base_u_intmax_print(uintmax_t arg, t_param *param, t_buff *buff);
+void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff);
 
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff);

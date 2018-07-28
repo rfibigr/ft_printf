@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/25 11:07:24 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/27 18:27:49 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,33 +17,23 @@ int	ft_printf(const char *str, ...)
 	t_buff		buff;
 	t_param		param;
 	char 		*str_cp;
+	char 		*str_cp_adress1;
 	va_list		ap;
 
-	str_cp = ft_strdup(str);
-	buff.size = 0;
-	ft_bzero(buff.str, BUFF_SIZE);
+	if(!(str_cp = ft_strdup(str)))
+		return (-1);
+	str_cp_adress1 = str_cp;
+	initial_buff(&buff);
 	va_start(ap, str);
 	while (*str_cp != '\0')
 	{
-		if (!(read_str(&str_cp, &buff, &param)))
+		if (!(read_str(&str_cp, &buff, &param)) /* && error_management(param) */)
 			return (-1);
 		if (*str_cp != '\0')
 			assign_function(ap, param, &buff);
 	}
+	write_buffer(&buff, buff.i);
 	va_end(ap);
-	//free (str_cp);
+	free (str_cp_adress1);
 	return (buff.size);
 }
-
-
-/** Fonction lecture str
-* On recupere le type du premier %
-	On lit str jusqu'a % ou jusqu'a la fin de
-	On imprimme par taille de BUFF_SIZE
-	on note le nombre de caracteres imprimme
-
-* on test si formatage est ok
-* si argument est ok
-* on envoie dans les differentes fonctions pour preparer l'argument
-* on imprimme l'argument
-*/

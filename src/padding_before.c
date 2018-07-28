@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 10:41:30 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 14:38:11 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,39 +47,4 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 	}
 	if (padding.precision > 0)
 		print_caract(padding.precision, buff, '0');
-}
-
-void	print_caract(int i, t_buff *buff, char c)
-{
-	int i_buffer;
-
-	i_buffer = 0;
-	while (i > 0)
-	{
-		buff->str[i_buffer] = c;
-		i_buffer++;
-		i--;
-		if (i_buffer == BUFF_SIZE)
-		{
-			write_buffer(buff, i_buffer);
-			i_buffer = 0;;
-		}
-	}
-	write_buffer(buff, i_buffer);
-}
-
-void	print_sign(t_buff *buff, t_param param, t_padding padding)
-{
-	if (padding.sign == -1)
-		print_caract(1, buff, '-');
-	if (param.flag[e_flag_more] && padding.sign == 0)
-		print_caract(1, buff, '+');
-	if (param.flag[e_flag_space] && padding.sign == 0)
-		print_caract(1, buff, ' ');
-}
-
-void	print_hastag(t_buff *buff, t_param param)
-{
-	print_caract(1, buff, '0');
-	print_caract(1, buff, param.conver);
 }

@@ -24,7 +24,7 @@ void		modifier_s_j(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_intmax_nbr((intmax_t)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_intmax_print((intmax_t)arg, &param, buff);
+	print_signed_j((intmax_t)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }

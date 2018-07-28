@@ -1,4 +1,4 @@
 obj/*
 *.out
 *.o
-*.gch
+include/*.gch

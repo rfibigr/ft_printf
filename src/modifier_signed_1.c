@@ -24,7 +24,7 @@ void		modifier_s_no(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_nbr(arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_print((int)arg, &param, buff);
+	print_signed_int((int)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }
@@ -41,7 +41,7 @@ void		modifier_s_hh(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_nbr((char)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_print((char)arg, &param, buff);
+	print_signed_int((char)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }
@@ -58,7 +58,7 @@ void		modifier_s_h(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_nbr((short int)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_print((short int)arg, &param, buff);
+	print_signed_int((short int)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }
@@ -75,7 +75,7 @@ void		modifier_s_ll(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_l_nbr((long long int)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_l_print((long long int)arg, &param, buff);
+	print_signed_l((long long int)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }
@@ -92,7 +92,7 @@ void		modifier_s_l(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_l_nbr((long int)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	itoa_base_l_print((long int)arg, &param, buff);
+	print_signed_l((long int)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }

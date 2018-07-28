@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 14:22:44 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/26 16:57:21 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 	param.conver = 'x';
 	print_hastag(buff, param);
-	itoa_base_lu_print(arg, &param, buff);
+	print_unsigned_l(arg, &param, buff);
 }
 
 void	print_str(va_list ap, t_buff *buff)
@@ -72,5 +72,4 @@ void	print_str(va_list ap, t_buff *buff)
 		add_buffer(buff, *str);
 		str = str + 1;
 	}
-	write_buffer(buff, BUFF_SIZE);
 }
