@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 17:04:05 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/29 16:09:40 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 
 /******** DEFINE ********/
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 1
+
 /* Number of argument for differents parameter */
 # define FLAG_NUMBER 5
 # define BASE_SIZE 16
@@ -139,8 +140,7 @@ void	modifier_s_h(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_l(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_ll(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_j(va_list ap, t_param param, t_buff *buff);
-void	(*modifier_signed[6])(va_list, t_param, t_buff *);
-
+void	(*modifier_signed[7])(va_list, t_param, t_buff *);
 void	assign_unsigned_modifier(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_no(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_hh(va_list ap, t_param param, t_buff *buff);
@@ -149,12 +149,16 @@ void	modifier_u_l(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_ll(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_j(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_z(va_list ap, t_param param, t_buff *buff);
-void	(*modifier_unsigned[6])(va_list, t_param, t_buff *);
+void	(*modifier_unsigned[8])(va_list, t_param, t_buff *);
 
 
 void	print_param(t_param param);
 void	print_padding(t_padding *padding);
 
+char	*ft_strdup(const char *s);
+size_t	ft_strlen(const char *s);
+void	ft_strcp(char *copy, const char *src);
+void	ft_bzero(void *s, size_t n);
 
 
 #endif

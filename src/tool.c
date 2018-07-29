@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_libft.c                                         :+:      :+:    :+:   */
+/*   tool.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/29 15:01:57 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/29 16:27:48 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void				ft_bzero(void *s, size_t n)
 		((unsigned char *)s)[i++] = 0;
 }
 
-static void	ft_strcp(char *copy, const char *src)
+void	ft_strcp(char *copy, const char *src)
 {
 	int		i;
 
-	i = -1;
+	i = 0;
 	while (src[i])
 	{
 		copy[i] = src[i];

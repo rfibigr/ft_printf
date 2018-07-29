@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/07/28 10:05:32 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/07/29 15:51:56 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -41,9 +41,7 @@ SRC =						\
 		modifier_unsigned_1.c \
 		modifier_unsigned_2.c \
 		print_buffer.c \
-		ft_bzero.c \
-		ft_strlen.c \
-		ft_strdup.c
+		tool.c
 
 
 OBJ =		$(SRC:.c=.o)
@@ -63,8 +61,8 @@ all : $(NAME)
 
 
 $(NAME) : $(OBJP)
-	make -C $(LIB_PATH)/libft
-	ar rc libftprintf.a $(OBJP)
+#	make -C $(LIB_PATH)/libft
+	ar rc $(NAME) $(OBJP)
 	ranlib $(NAME)
 #	$(CC) -o $@ $^ $(LIBP)
 
@@ -74,11 +72,11 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 clean :
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_PATH) 2 /dev/null || true
-	make clean -C $(LIB_PATH)/libft
+#	make clean -C $(LIB_PATH)/libft
 
 fclean : clean
 	rm -rf $(NAME)
-	make fclean -C $(LIB_PATH)/libft
+#	make fclean -C $(LIB_PATH)/libft
 
 re: fclean all
 
