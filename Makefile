@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/07/28 09:53:28 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/07/28 10:05:32 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -40,7 +40,11 @@ SRC =						\
 		modifier_signed_2.c \
 		modifier_unsigned_1.c \
 		modifier_unsigned_2.c \
-		print_buffer.c
+		print_buffer.c \
+		ft_bzero.c \
+		ft_strlen.c \
+		ft_strdup.c
+
 
 OBJ =		$(SRC:.c=.o)
 LIBNAME =	libft/libft.a
