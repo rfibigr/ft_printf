@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 16:50:13 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/31 11:19:04 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 			{
 				if(!(verif_form(str, param)))
 					return (0);
+				if(param->conver == '%')
+					add_buffer(buff, '%');
 				return (1);
 			};
 		}

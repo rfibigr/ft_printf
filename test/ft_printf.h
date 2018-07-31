@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 17:54:11 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/31 11:04:44 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ typedef struct		s_padding
 		int		precision;
 		int		sign;
 		int		size;
-		int		arg_zero;
 }					t_padding;
 
 enum	e_flag
@@ -107,7 +106,7 @@ void	verif_lmodifier(char **str, t_param *param);
 void	verif_conversion(char **str, t_param *param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
-void	print_hastag(t_buff *buff, t_param param, int precision);
+void	print_hastag(t_buff *buff, t_param param);
 void	print_caract(int i, t_buff *buff, char c);
 void	padding_struct(t_padding *padding, t_param param);
 void	padding_before(t_param param, t_padding padding, t_buff *buff);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base_size_t.c                                 :+:      :+:    :+:   */
+/*   print_z.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/26 09:53:48 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 17:01:56 by rfibigr          ###   ########.fr       */
+/*   Created: 2018/07/31 16:21:54 by rfibigr           #+#    #+#             */
+/*   Updated: 2018/07/31 18:01:48 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		size_sizet_nbr(size_t arg, t_param param)
 	int i;
 
 	i = 1;
+	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hashtag] == 0)
+		return (0);
 	while (arg / param.base)
 	{
 		i++;

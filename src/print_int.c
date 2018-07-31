@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_base.c                                        :+:      :+:    :+:   */
+/*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 11:14:43 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 17:04:06 by rfibigr          ###   ########.fr       */
+/*   Created: 2018/07/31 16:21:24 by rfibigr           #+#    #+#             */
+/*   Updated: 2018/07/31 18:01:47 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		size_nbr(int arg, t_param param)
 	int i;
 
 	i = 1;
+	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hashtag] == 0)
+		return (0);
 	while (arg / param.base)
 	{
 		i++;
@@ -44,6 +46,8 @@ int		size_u_nbr(unsigned int arg, t_param param)
 	int i;
 
 	i = 1;
+	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hashtag] == 0)
+		return (0);
 	while (arg / param.base)
 	{
 		i++;

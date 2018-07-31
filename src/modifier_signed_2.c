@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 14:03:36 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 10:03:40 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/31 16:29:39 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		modifier_s_j(va_list ap, t_param param, t_buff *buff)
 	padding.size = size_intmax_nbr((intmax_t)arg, param);
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
-	print_signed_j((intmax_t)arg, &param, buff);
+	if(!(arg == 0 && param.precision == 0))
+		print_signed_j((intmax_t)arg, &param, buff);
 	if (param.flag[e_flag_less])
 	print_caract(padding.width, buff, ' ');
 }

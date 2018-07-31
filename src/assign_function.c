@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/26 16:57:21 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/07/31 16:06:00 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 
 	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 	param.conver = 'x';
-	print_hastag(buff, param);
+	print_hastag(buff, param, 0);
 	print_unsigned_l(arg, &param, buff);
 }
 
