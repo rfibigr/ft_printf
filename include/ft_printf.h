@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/01 13:59:24 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 16:25:24 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <inttypes.h>
 #include <stdio.h>
+#include <math.h>
 
 /******** DEFINE ********/
 
@@ -164,6 +165,7 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlen(const char *s);
 void	ft_strcp(char *copy, const char *src);
 void	ft_bzero(void *s, size_t n);
+int abs_value(int i);
 
 
 #endif

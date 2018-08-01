@@ -38,8 +38,8 @@ void		print_signed_l(long long int arg, t_param *param, t_buff *buff)
 		arg = arg * -1;
 	if (arg / param->base != 0)
 		print_signed_l(arg / param->base, param, buff);
-	arg % param->base <= 9 ? add_buffer(buff, arg % param->base + '0') :
-	add_buffer(buff, (arg % param->base) + 'A' -10 + i_case);
+	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }
 
 int		size_lu_nbr(unsigned long long int arg, t_param param)
@@ -66,6 +66,6 @@ void		print_unsigned_l(unsigned long long int arg, t_param *param, t_buff *buff)
 	param->conver == 'x' ? i_case = 32 : 1 ;
 	if (arg / param->base != 0)
 		print_unsigned_l(arg / param->base, param, buff);
-	arg % param->base <= 9 ? add_buffer(buff, arg % param->base + '0') :
-	add_buffer(buff, (arg % param->base) + 'A' -10 + i_case);
+	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }

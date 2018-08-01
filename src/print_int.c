@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 16:21:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 18:01:47 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 16:29:29 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ void	print_signed_int(int arg, t_param *param, t_buff *buff)
 
 	i_case = 0;
 	param->conver == 'x' ? i_case = 32 : 1 ;
-	if (arg < 0)
-		arg = arg * -1;
 	if (arg / param->base != 0)
 		print_signed_int(arg / param->base, param, buff);
-	arg % param->base <= 9 ? add_buffer(buff, arg % param->base + '0') :
-	add_buffer(buff, (arg % param->base) + 'A' -10 + i_case);
+	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	add_buffer(buff, abs_value(arg % param->base) + 'A' -10 + i_case);
 }
 
 int		size_u_nbr(unsigned int arg, t_param param)
@@ -64,6 +62,6 @@ void		print_unsigned_int(unsigned int arg, t_param *param, t_buff *buff)
 	param->conver == 'x' ? i_case = 32 : 1 ;
 	if (arg / param->base != 0)
 		print_unsigned_int(arg / param->base, param, buff);
-	arg % param->base <= 9 ? add_buffer(buff, arg % param->base + '0') :
-	add_buffer(buff, (arg % param->base) + 'A' -10 + i_case);
+	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }

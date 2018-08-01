@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/29 16:27:48 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 16:25:07 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,11 @@ size_t		ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+int abs_value(int i)
+{
+	if (i < 0)
+		return(-i);
+	return(i);
 }
