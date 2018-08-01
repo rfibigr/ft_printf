@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 16:20:48 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 14:01:22 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	write_buffer(t_buff *buff, int i_buff)
 	ft_bzero(buff->str, BUFF_SIZE);
 }
 
-void	print_caract(int i, t_buff *buff, char c)
+void	ft_print_charact(int i, t_buff *buff, char c)
 {
 	while (i > 0)
 	{
@@ -61,4 +61,13 @@ void	print_hastag(t_buff *buff, t_param param, int precision)
 		add_buffer(buff, '0');
 	if (param.conver == 'x' || param.conver == 'X')
 		add_buffer(buff, param.conver);
+}
+
+void	ft_print_str(t_buff *buff, char *str)
+{
+	while (*str)
+	{
+		add_buffer(buff, *str);
+		str++;
+	}
 }

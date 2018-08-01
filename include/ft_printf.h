@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 17:54:11 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 13:59:24 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,18 @@ void	verif_conversion(char **str, t_param *param);
 void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_buff *buff, t_param param, int precision);
-void	print_caract(int i, t_buff *buff, char c);
+void	ft_print_charact(int i, t_buff *buff, char c);
 void	padding_struct(t_padding *padding, t_param param);
 void	padding_before(t_param param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param param, t_padding padding);
 void	str_upper(char *str[16]);
 void	print_adress(va_list ap, t_param param, t_buff *buff);
-void	print_str(va_list ap, t_buff *buff);
+int		print_str(va_list ap, t_buff *buff, t_param param);
 void	add_buffer(t_buff *buff, char c);
+void	ft_print_str(t_buff *buff, char *str);
+
+void	padding_before_str(t_param *param, int len, t_buff *buff);
+void	print_char(va_list ap, t_buff *buff, t_param param);
 
 int		size_nbr(int arg, t_param param);
 void	print_signed_int(int arg, t_param *param, t_buff *buff);

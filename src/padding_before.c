@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 17:55:56 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 13:56:14 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 			print_sign(buff, param, padding);
 		if (param.flag[e_flag_hashtag] == 1 && param.flag[e_flag_zero] == 1)
 			print_hastag(buff, param, padding.precision);
-		param.flag[e_flag_zero] == TRUE ? print_caract(padding.width, buff, '0') :
-		print_caract(padding.width, buff, ' ');
+		param.flag[e_flag_zero] == TRUE ? ft_print_charact(padding.width, buff, '0') :
+		ft_print_charact(padding.width, buff, ' ');
 	}
 	if (param.flag[e_flag_zero] == 0)
 	{
@@ -53,5 +53,23 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 	if (padding.width <= 0 && param.flag[e_flag_zero] == 1)
 			print_sign(buff, param, padding);
 	if (padding.precision > 0)
-		print_caract(padding.precision, buff, '0');
+		ft_print_charact(padding.precision, buff, '0');
+}
+
+void	padding_before_str(t_param *param, int len, t_buff *buff)
+{
+	if (param->precision == -1)
+	{
+		param->width = param->width - len;
+		param->precision = len;
+	}
+	else
+	{
+		if (param->precision > len)
+			param->width = param->width - len;
+		else
+			param->width = param->width - param->precision;
+	}
+	if (param->width > 0 && param->flag[e_flag_less] == 0)
+		ft_print_charact(param->width, buff, ' ');
 }

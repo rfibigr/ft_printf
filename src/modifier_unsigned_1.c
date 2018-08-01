@@ -27,7 +27,7 @@ void		modifier_u_no(va_list ap, t_param param, t_buff *buff)
 	if(!(arg == 0 && param.precision == 0))
 		print_unsigned_int((unsigned int)arg, &param, buff);
 	if (param.flag[e_flag_less])
-	print_caract(padding.width, buff, ' ');
+	ft_print_charact(padding.width, buff, ' ');
 }
 
 void		modifier_u_hh(va_list ap, t_param param, t_buff *buff)
@@ -45,7 +45,7 @@ void		modifier_u_hh(va_list ap, t_param param, t_buff *buff)
 	if(!(arg == 0 && param.precision == 0))
 		print_unsigned_int((unsigned char)arg, &param, buff);
 	if (param.flag[e_flag_less])
-	print_caract(padding.width, buff, ' ');
+	ft_print_charact(padding.width, buff, ' ');
 }
 
 void		modifier_u_h(va_list ap, t_param param, t_buff *buff)
@@ -63,7 +63,7 @@ void		modifier_u_h(va_list ap, t_param param, t_buff *buff)
 	if(!(arg == 0 && param.precision == 0))
 		print_unsigned_int((unsigned short int)arg, &param, buff);
 	if (param.flag[e_flag_less])
-	print_caract(padding.width, buff, ' ');
+	ft_print_charact(padding.width, buff, ' ');
 }
 
 void		modifier_u_ll(va_list ap, t_param param, t_buff *buff)
@@ -81,7 +81,7 @@ void		modifier_u_ll(va_list ap, t_param param, t_buff *buff)
 	if(!(arg == 0 && param.precision == 0))
 		print_unsigned_l((unsigned long long int)arg, &param, buff);
 	if (param.flag[e_flag_less])
-	print_caract(padding.width, buff, ' ');
+	ft_print_charact(padding.width, buff, ' ');
 }
 
 void		modifier_u_l(va_list ap, t_param param, t_buff *buff)
@@ -99,5 +99,5 @@ void		modifier_u_l(va_list ap, t_param param, t_buff *buff)
 	if(!(arg == 0 && param.precision == 0))
 		print_unsigned_l((unsigned long int)arg, &param, buff);
 	if (param.flag[e_flag_less])
-	print_caract(padding.width, buff, ' ');
+	ft_print_charact(padding.width, buff, ' ');
 }

@@ -4,8 +4,9 @@
 int main(int ac, char **av)
 {
 	(void) ac;
-	ft_printf(av[1], ft_atoi(av[2]), ft_atoi(av[3]));
+	(void**) av;
+	ft_printf("%%d 2147483648 = %d | %%d -2147483648 = %d |",2147483648, -2147483648);
 	printf("\n");
-	printf(av[1], ft_atoi(av[2]), ft_atoi(av[3]));
+	printf("%%d 2147483648 = %d | %%d -2147483648 = %d |",2147483648, -2147483648);
 	return(0);
 }

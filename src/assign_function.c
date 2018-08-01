@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 16:06:00 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/01 14:00:28 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void		assign_function(va_list ap, t_param param, t_buff *buff)
 	else if (param.conver == 'p')
 		print_adress(ap, param, buff);
 	else if (param.conver == 'c')
-		print_caract(1, buff, (char)va_arg(ap, int));
+		print_char(ap, buff, param);
 	else if (param.conver == 's')
-		print_str(ap, buff);
+		print_str(ap, buff, param);
 
 }
 
@@ -61,15 +61,35 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 	print_unsigned_l(arg, &param, buff);
 }
 
-void	print_str(va_list ap, t_buff *buff)
+int		print_str(va_list ap, t_buff *buff, t_param param)
 {
 	char *str;
 
 	str = (char *)va_arg(ap, char*);
-	while (*str)
+	if (str == NULL)
 	{
-	//	print_caract(1, buff, *str);
+		ft_print_str(buff, "(null)\0");
+		return (0);
+	}
+	padding_before_str(&param, ft_strlen(str), buff);
+
+	while (*str && param.precision > 0)
+	{
 		add_buffer(buff, *str);
 		str = str + 1;
+		param.precision--;
 	}
+	if (param.flag[e_flag_less])
+		ft_print_charact(param.width, buff, ' ');
+	return (1);
+}
+
+void	print_char(va_list ap, t_buff *buff, t_param param)
+{
+
+	if (param.flag[e_flag_less] == 0)
+		ft_print_charact(param.width - 1, buff, ' ');
+	ft_print_charact(1, buff, (char)va_arg(ap, int));
+	if (param.flag[e_flag_less])
+		ft_print_charact(param.width - 1, buff, ' ');
 }
