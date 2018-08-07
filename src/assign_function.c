@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 16:03:33 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/07 21:13:09 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)
 	modifier_signed[e_modif_ll] = modifier_s_ll;
 	modifier_signed[e_modif_l] = modifier_s_l;
 	modifier_signed[e_modif_j] = modifier_s_j;
-	modifier_signed[e_modif_z] = modifier_u_z;
+	modifier_signed[e_modif_z] = modifier_s_z;
 	modifier_signed[param.lmodifier](ap, param, buff);
 }
 
@@ -59,8 +59,9 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 	param.conver = 'x';
 	print_hastag(buff, param, 0);
-	if (arg != 0)
+	if (param.precision != 0 && arg == 0)
 		print_unsigned_l(arg, &param, buff);
+
 }
 
 int		print_str(va_list ap, t_buff *buff, t_param param)

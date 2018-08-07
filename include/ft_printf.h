@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 15:47:28 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/07 18:10:36 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /******** DEFINE ********/
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 100
 
 /* Number of argument for differents parameter */
 # define FLAG_NUMBER 5
@@ -39,8 +39,8 @@
 # define CONVERSION(a) ((a == 's' || a == 'S' || a == 'p' || a == 'd'\
 					|| a == 'D' || a == 'o' || a == 'O' || a == 'u'\
 					|| a == 'U' || a == 'x' || a == 'X' || a == 'c'\
-					|| a == 'C' || a == '%') ? 1 : 0)
-# define NUMBER_SIGNED(a) ((a == 'd') ? 1 : 0)
+					|| a == 'C' || a == '%' || a == 'i') ? 1 : 0)
+# define NUMBER_SIGNED(a) ((a == 'd' || a == 'i') ? 1 : 0)
 # define NUMBER_UNSIGNED(a) ((a == 'o' || a == 'u'\
 					|| a == 'x' || a == 'X') ? 1 : 0) \
 
@@ -139,6 +139,8 @@ int		size_lu_nbr(unsigned long long int arg, t_param param);
 void	print_unsigned_l(unsigned long long int arg, t_param *param, t_buff *buff);
 int		size_u_intmax_nbr(uintmax_t arg, t_param param);
 void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff);
+int		size_ssizet_nbr(size_t arg, t_param param);
+void	print_signed_z(ssize_t arg, t_param *param, t_buff *buff);
 
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff);
@@ -148,7 +150,8 @@ void	modifier_s_h(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_l(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_ll(va_list ap, t_param param, t_buff *buff);
 void	modifier_s_j(va_list ap, t_param param, t_buff *buff);
-void	(*modifier_signed[7])(va_list, t_param, t_buff *);
+void	modifier_s_z(va_list ap, t_param param, t_buff *buff);
+void	(*modifier_signed[8])(va_list, t_param, t_buff *);
 void	assign_unsigned_modifier(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_no(va_list ap, t_param param, t_buff *buff);
 void	modifier_u_hh(va_list ap, t_param param, t_buff *buff);
