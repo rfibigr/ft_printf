@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/01 16:25:24 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/07 15:47:28 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@
 					|| a == 'D' || a == 'o' || a == 'O' || a == 'u'\
 					|| a == 'U' || a == 'x' || a == 'X' || a == 'c'\
 					|| a == 'C' || a == '%') ? 1 : 0)
-# define NUMBER_SIGNED(a) ((a == 'd' || a == 'D') ? 1 : 0)
-# define NUMBER_UNSIGNED(a) ((a == 'o' || a == 'O' || a == 'u'\
-					|| a == 'U' || a == 'x' || a == 'X') ? 1 : 0) \
+# define NUMBER_SIGNED(a) ((a == 'd') ? 1 : 0)
+# define NUMBER_UNSIGNED(a) ((a == 'o' || a == 'u'\
+					|| a == 'x' || a == 'X') ? 1 : 0) \
 
 /******** DATA STRUCT ********/
 
@@ -118,6 +118,8 @@ void	print_adress(va_list ap, t_param param, t_buff *buff);
 int		print_str(va_list ap, t_buff *buff, t_param param);
 void	add_buffer(t_buff *buff, char c);
 void	ft_print_str(t_buff *buff, char *str);
+void	print_percent(t_buff *buff, t_param param);
+
 
 void	padding_before_str(t_param *param, int len, t_buff *buff);
 void	print_char(va_list ap, t_buff *buff, t_param param);

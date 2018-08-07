@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/07/30 21:45:22 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/08/02 14:37:37 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -60,8 +60,8 @@ all : $(NAME)
 
 
 $(NAME) : $(OBJP)
-	make -C $(LIB_PATH)/libft
-	cp lib/libft/libft.a ./$(NAME)
+#	make -C $(LIB_PATH)/libft
+#	cp lib/libft/libft.a ./$(NAME)
 	ar rc $(NAME) $(OBJP)
 	ranlib $(NAME)
 #	$(CC) -o $@ $^ $(LIBP)
@@ -72,11 +72,11 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 clean :
 	rm -rf $(OBJ)
 	rm -rf $(OBJ_PATH) 2 /dev/null || true
-	make clean -C $(LIB_PATH)/libft
+#	make clean -C $(LIB_PATH)/libft
 
 fclean : clean
 	rm -rf $(NAME)
-	make fclean -C $(LIB_PATH)/libft
+#	make fclean -C $(LIB_PATH)/libft
 
 re: fclean all
 

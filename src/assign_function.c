@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/01 14:00:28 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/07 16:03:33 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void		assign_function(va_list ap, t_param param, t_buff *buff)
 		print_char(ap, buff, param);
 	else if (param.conver == 's')
 		print_str(ap, buff, param);
-
+	else if (param.conver == '%')
+		print_percent(buff, param);
 }
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)
@@ -58,7 +59,8 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
 	param.conver = 'x';
 	print_hastag(buff, param, 0);
-	print_unsigned_l(arg, &param, buff);
+	if (arg != 0)
+		print_unsigned_l(arg, &param, buff);
 }
 
 int		print_str(va_list ap, t_buff *buff, t_param param)
@@ -86,10 +88,18 @@ int		print_str(va_list ap, t_buff *buff, t_param param)
 
 void	print_char(va_list ap, t_buff *buff, t_param param)
 {
-
 	if (param.flag[e_flag_less] == 0)
 		ft_print_charact(param.width - 1, buff, ' ');
 	ft_print_charact(1, buff, (char)va_arg(ap, int));
+	if (param.flag[e_flag_less])
+		ft_print_charact(param.width - 1, buff, ' ');
+}
+
+void	print_percent(t_buff *buff, t_param param)
+{
+	if (param.flag[e_flag_less] == 0)
+		ft_print_charact(param.width - 1, buff, ' ');
+	ft_print_charact(1, buff, '%');
 	if (param.flag[e_flag_less])
 		ft_print_charact(param.width - 1, buff, ' ');
 }
