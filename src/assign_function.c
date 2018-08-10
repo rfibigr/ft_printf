@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 23:03:45 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/10 15:59:51 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ void		assign_function(va_list ap, t_param param, t_buff *buff)
 		assign_unsigned_modifier(ap, param, buff);
 	else if (param.conver == 'p')
 		print_adress(ap, param, buff);
-	else if (param.conver == 'c')
+	else if (param.conver == 'c' && param.lmodifier != e_modif_l)
 		print_char(ap, buff, param);
-	else if (param.conver == 's')
+	else if (param.conver == 's' && param.lmodifier != e_modif_l)
 		print_str(ap, buff, param);
 	else if (param.conver == '%')
 		print_percent(buff, param);
+	else if (param.conver == 'c' && param.lmodifier == e_modif_l)
+		print_wchar(ap, buff, param);
+	else if (param.conver == 's' && param.lmodifier == e_modif_l)
+		print_strwchar(ap, buff, param);
 }
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)
@@ -101,6 +105,41 @@ void	print_percent(t_buff *buff, t_param param)
 	if (param.flag[e_flag_less] == 0)
 		ft_print_charact(param.width - 1, buff, ' ');
 	ft_print_charact(1, buff, '%');
+	if (param.flag[e_flag_less])
+		ft_print_charact(param.width - 1, buff, ' ');
+}
+
+int		print_strwchar(va_list ap, t_buff *buff, t_param param)
+{
+	wchar_t *str;
+
+	str = (wchar_t *)va_arg(ap, wchar_t*);
+	if (str == NULL)
+	{
+		ft_print_str(buff, "(null)\0");
+		return (0);
+	}
+//	padding_before_str(&param, ft_strlen_wchar(str), buff);
+
+	while (*str/* && param.precision > 0*/)
+	{
+		ft_print_wchar(*str, buff);
+		str = str + 1;
+		param.precision--;
+	}
+//	if (param.flag[e_flag_less])
+//		ft_print_charact(param.width, buff, ' ');
+	return (1);
+}
+
+void	print_wchar(va_list ap, t_buff *buff, t_param param)
+{
+	wchar_t wc;
+
+	wc = (wchar_t)va_arg(ap, wchar_t);
+	if (param.flag[e_flag_less] == 0)
+		ft_print_charact(param.width - 1, buff, ' ');
+	ft_print_wchar(wc, buff);
 	if (param.flag[e_flag_less])
 		ft_print_charact(param.width - 1, buff, ' ');
 }

@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 18:10:36 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/10 15:52:59 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,10 @@ int		size_u_intmax_nbr(uintmax_t arg, t_param param);
 void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff);
 int		size_ssizet_nbr(size_t arg, t_param param);
 void	print_signed_z(ssize_t arg, t_param *param, t_buff *buff);
+int		ft_print_wchar(wchar_t wc, t_buff *buff);
+void	print_wchar(va_list ap, t_buff *buff, t_param param);
+int		print_strwchar(va_list ap, t_buff *buff, t_param param);
+size_t		ft_strlen_wchar(wchar_t *s);
 
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff);
@@ -171,6 +175,9 @@ size_t	ft_strlen(const char *s);
 void	ft_strcp(char *copy, const char *src);
 void	ft_bzero(void *s, size_t n);
 int abs_value(int i);
+
+//TOOLS PRINT UNICODE
+void	print_bit(wchar_t value);
 
 
 #endif

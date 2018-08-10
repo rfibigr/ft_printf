@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/01 14:01:22 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/10 14:07:13 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ void	write_buffer(t_buff *buff, int i_buff)
 	int tmp;
 
 	tmp = write(1, &(buff->str), i_buff);
-	if (tmp == -1)
-		exit (1);
 	buff->size += tmp;
-//	buff->size += write(0, &(buff->str), i_buff);
-	ft_bzero(buff->str, BUFF_SIZE);
+//	ft_bzero(buff->str, BUFF_SIZE);
 }
 
 void	ft_print_charact(int i, t_buff *buff, char c)
