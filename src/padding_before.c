@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/01 13:56:14 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 00:07:19 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,10 @@ void	padding_before_str(t_param *param, int len, t_buff *buff)
 			param->width = param->width - param->precision;
 	}
 	if (param->width > 0 && param->flag[e_flag_less] == 0)
-		ft_print_charact(param->width, buff, ' ');
+	{
+		if (param->flag[e_flag_zero])
+			ft_print_charact(param->width, buff, '0');
+		else
+			ft_print_charact(param->width, buff, ' ');
+	}
 }

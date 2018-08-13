@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/10 15:52:59 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/10 19:15:47 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param param, t_padding padding);
 void	str_upper(char *str[16]);
 void	print_adress(va_list ap, t_param param, t_buff *buff);
+int		size_adress(unsigned long adress);
 int		print_str(va_list ap, t_buff *buff, t_param param);
 void	add_buffer(t_buff *buff, char c);
 void	ft_print_str(t_buff *buff, char *str);

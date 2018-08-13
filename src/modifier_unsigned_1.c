@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 13:58:16 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 17:07:18 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 01:09:06 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		modifier_u_no(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (unsigned int)va_arg(ap, unsigned int);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_u_nbr((unsigned int)arg, param);
 	padding_struct(&padding, param);
@@ -37,7 +37,7 @@ void		modifier_u_hh(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (unsigned char)va_arg(ap, unsigned int);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_u_nbr((unsigned char)arg, param);
 	padding_struct(&padding, param);
@@ -55,7 +55,7 @@ void		modifier_u_h(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (unsigned short int)va_arg(ap, unsigned int);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_u_nbr((unsigned short int)arg, param);
 	padding_struct(&padding, param);
@@ -73,7 +73,7 @@ void		modifier_u_ll(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_lu_nbr((long long int)arg, param);
 	padding_struct(&padding, param);
@@ -91,7 +91,7 @@ void		modifier_u_l(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (unsigned long int)va_arg(ap, unsigned long int);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_lu_nbr((unsigned long int)arg, param);
 	padding_struct(&padding, param);

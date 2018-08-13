@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 14:03:36 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 17:07:18 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 01:09:28 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		modifier_u_j(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (uintmax_t)va_arg(ap, uintmax_t);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_u_intmax_nbr((uintmax_t)arg, param);
 	padding_struct(&padding, param);
@@ -37,7 +37,7 @@ void		modifier_u_z(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (size_t)va_arg(ap, size_t);
-	if (arg == 0 && param.conver != 'o')
+	if (arg == 0)
 			param.flag[e_flag_hashtag] = 0;
 	padding.size = size_sizet_nbr((size_t)arg, param);
 	padding_struct(&padding, param);

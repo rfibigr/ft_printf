@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/08/10 15:34:10 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/08/12 22:50:16 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -41,7 +41,6 @@ SRC =	ft_printf.c \
 		modifier_unsigned_2.c \
 		print_buffer.c \
 		print_wchar.c \
-		test_unicode.c \
 		tool.c
 
 

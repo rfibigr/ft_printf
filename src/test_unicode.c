@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/08 15:48:52 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/10 15:58:21 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/12 22:50:09 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ void	print_bit(wchar_t value)
 //	int i_str;
 	i = 31;
 	j = 0;
-	printf("w = %d\n", value);
-	printf("%lu\n",sizeof(value));
 	while (i >= 0)
 	{
 		if (j == 8)
