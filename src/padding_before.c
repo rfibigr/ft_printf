@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 12:17:52 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 17:48:44 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 	}
 	if (padding.width <= 0 && param.flag[e_flag_zero] == 1)
 			print_sign(buff, param, padding);
+	if (padding.width <= 0 && param.flag[e_flag_zero] == 1 && param.flag[e_flag_hastag] == TRUE)
+			print_hastag(buff, param, padding.precision);
 	if (padding.precision > 0)
 		ft_print_charact(padding.precision, buff, '0');
 }

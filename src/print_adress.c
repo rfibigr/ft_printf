@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:36:21 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 11:36:54 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 18:05:05 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,28 @@
 void	print_adress(va_list ap, t_param param, t_buff *buff)
 {
 	unsigned long long int arg;
+	t_padding padding;
 
-	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
-	if (arg == 0)
-		param.width -= 3;
-	else
-		param.width -= size_adress(arg);
-	if (param.flag[e_flag_less] == FALSE && param.width > 0
-		&& param.flag[e_flag_zero] == FALSE)
-		ft_print_charact(param.width, buff, ' ');
+	padding.sign = 0;
 	param.conver = 'x';
-	print_hastag(buff, param, 0);
-	if (param.flag[e_flag_less] == FALSE && param.width > 0
-		&& param.flag[e_flag_zero] == TRUE)
-		ft_print_charact(param.width, buff, '0');
-	if (!(param.precision == 0 && arg == 0))
-		print_unsigned_l(arg, &param, buff);
-/* cas particulier pour adress = 0 et Width */
-	if (param.flag[e_flag_less] == TRUE && param.width > 0)
-		ft_print_charact(param.width, buff, ' ');
+	param.flag[e_flag_hastag] = TRUE;
+	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
+	padding.size = size_adress(arg);
+	if (padding.precision == -1)
+		padding.width--;
+	padding_struct(&padding, param);
+	padding_before(param, padding, buff);
+	if (!(arg == 0 && param.precision != -1))
+		print_unsigned_l((unsigned long long int)arg, &param, buff);
+	if (param.flag[e_flag_less])
+		ft_print_charact(padding.width, buff, ' ');
 }
 
 int		size_adress(unsigned long adress)
 {
 	int i;
 
-	i = 2;
+	i = 0;
 	while (adress != 0)
 	{
 		i++;
