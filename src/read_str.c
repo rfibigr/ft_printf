@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 23:29:46 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 12:58:16 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 	{
 		if (**str == '%')
 		{
-			//ecriture ternaire
 			*str = *str + 1;
 			if (**str == 0)
-				return(1);
-			if(!(verif_form(str, param)))
+				return (1);
+			if (!(verif_form(str, param)))
 				return (0);
 			return (1);
 		}
@@ -35,14 +34,11 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 
 int		verif_form(char **str, t_param *param)
 {
-//	initial_param(param);
 	if (FLAG(**str))
 		verif_flag(str, param);
 	if (WIDTH(**str))
-	// verifier si Int suffisant
 		verif_min_width(str, param);
 	if (PRECISION(**str))
-	//verifier si Int suffisant
 		verif_precision(str, param);
 	if (LMODIFIER(**str))
 		verif_lmodifier(str, param);

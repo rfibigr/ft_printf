@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_buffer.c                                     :+:      :+:    :+:   */
+/*   buffer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 01:02:54 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 11:52:14 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	add_buffer(t_buff *buff, char c)
 {
-
 	(buff->str)[buff->i] = c;
 	buff->i++;
 	if (buff->i == BUFF_SIZE)
@@ -30,16 +29,6 @@ void	write_buffer(t_buff *buff, int i_buff)
 
 	tmp = write(1, &(buff->str), i_buff);
 	buff->size += tmp;
-//	ft_bzero(buff->str, BUFF_SIZE);
-}
-
-void	ft_print_charact(int i, t_buff *buff, char c)
-{
-	while (i > 0)
-	{
-		add_buffer(buff, c);
-		i--;
-	}
 }
 
 void	print_sign(t_buff *buff, t_param param, t_padding padding)
@@ -60,11 +49,11 @@ void	print_hastag(t_buff *buff, t_param param, int precision)
 		add_buffer(buff, param.conver);
 }
 
-void	ft_print_str(t_buff *buff, char *str)
+void	print_percent(t_buff *buff, t_param param)
 {
-	while (*str)
-	{
-		add_buffer(buff, *str);
-		str++;
-	}
+	if (param.flag[e_flag_less] == 0)
+		ft_print_charact(param.width - 1, buff, ' ');
+	ft_print_charact(1, buff, '%');
+	if (param.flag[e_flag_less])
+		ft_print_charact(param.width - 1, buff, ' ');
 }

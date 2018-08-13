@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 00:07:19 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 12:17:52 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	padding_struct(t_padding *padding, t_param param)
 		padding->width -= padding->precision;
 	if (NUMBER_SIGNED(param.conver))
 	{
-		if (padding->sign == -1 || param.flag[e_flag_more] == 1 || param.flag[e_flag_space] == 1)
+		if (padding->sign == -1 || param.flag[e_flag_more] == 1
+			|| param.flag[e_flag_space] == 1)
 			padding->width -= 1;
 	}
-	if (param.flag[e_flag_hashtag] == 1)
+	if (param.flag[e_flag_hastag] == 1)
 	{
 		if (param.conver == 'o')
 			padding->width -= 1;
@@ -36,18 +37,21 @@ void	padding_before(t_param param, t_padding padding, t_buff *buff)
 {
 	if (padding.width > 0 && param.flag[e_flag_less] == 0)
 	{
-		if (param.flag[e_flag_zero] == 1 && NUMBER_SIGNED(param.conver) == 1)
+		if (param.flag[e_flag_zero] == 1
+			&& NUMBER_SIGNED(param.conver) == 1)
 			print_sign(buff, param, padding);
-		if (param.flag[e_flag_hashtag] == 1 && param.flag[e_flag_zero] == 1)
+		if (param.flag[e_flag_hastag] == 1
+			&& param.flag[e_flag_zero] == 1)
 			print_hastag(buff, param, padding.precision);
-		param.flag[e_flag_zero] == TRUE ? ft_print_charact(padding.width, buff, '0') :
+		param.flag[e_flag_zero] == TRUE ?
+		ft_print_charact(padding.width, buff, '0') :
 		ft_print_charact(padding.width, buff, ' ');
 	}
 	if (param.flag[e_flag_zero] == 0)
 	{
 		if (NUMBER_SIGNED(param.conver) == 1)
 			print_sign(buff, param, padding);
-		if(param.flag[e_flag_hashtag] == 1)
+		if (param.flag[e_flag_hastag] == 1)
 			print_hastag(buff, param, padding.precision);
 	}
 	if (padding.width <= 0 && param.flag[e_flag_zero] == 1)

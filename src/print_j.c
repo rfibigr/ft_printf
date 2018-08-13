@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 16:21:33 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/31 18:01:48 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 12:54:20 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		size_intmax_nbr(intmax_t arg, t_param param)
 	int i;
 
 	i = 1;
-	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hashtag] == 0)
+	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hastag] == 0)
 		return (0);
 	while (arg / param.base)
 	{
@@ -37,7 +37,8 @@ void		print_signed_j(intmax_t arg, t_param *param, t_buff *buff)
 		arg = arg * -1;
 	if (arg / param->base != 0)
 		print_signed_j(arg / param->base, param, buff);
-	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	abs_value(arg % param->base) <= 9 ?
+	add_buffer(buff, abs_value(arg % param->base) + '0') :
 	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }
 
@@ -46,7 +47,7 @@ int		size_u_intmax_nbr(uintmax_t arg, t_param param)
 	int i;
 
 	i = 1;
-	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hashtag] == 0)
+	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hastag] == 0)
 		return (0);
 	while (arg / param.base)
 	{
@@ -56,7 +57,7 @@ int		size_u_intmax_nbr(uintmax_t arg, t_param param)
 	return (i);
 }
 
-void		print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff)
+void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff)
 {
 	int i_case;
 
@@ -64,6 +65,7 @@ void		print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff)
 	param->conver == 'x' ? i_case = 32 : 1;
 	if (arg / param->base != 0)
 		print_unsigned_j(arg / param->base, param, buff);
-	abs_value(arg % param->base) <= 9 ? add_buffer(buff, abs_value(arg % param->base) + '0') :
+	abs_value(arg % param->base) <= 9 ?
+	add_buffer(buff, abs_value(arg % param->base) + '0') :
 	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }

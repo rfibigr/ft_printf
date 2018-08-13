@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/07 18:12:54 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:04:10 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	verif_flag(char **str, t_param *param)
 	while (FLAG(**str))
 	{
 		if (**str == '#')
-			param->flag[e_flag_hashtag] = TRUE;
+			param->flag[e_flag_hastag] = TRUE;
 		else if (**str == '0')
 			param->flag[e_flag_zero] = TRUE;
 		else if (**str == '-')
@@ -46,9 +46,7 @@ void	verif_min_width(char **str, t_param *param)
 
 void	verif_precision(char **str, t_param *param)
 {
-	// On avance apres le point
 	*str = *str + 1;
-	// On lit tant que str et tant que chiffre
 	param->precision = 0;
 	while (WIDTH(**str))
 	{
@@ -86,14 +84,16 @@ void	verif_conversion(char **str, t_param *param)
 {
 	param->conver = **str;
 	*str = *str + 1;
-	if (param->conver == 'd' || param->conver == 'i' || param->conver == 'u' || param->conver == 'D' || param->conver == 'U')
+	if (param->conver == 'd' || param->conver == 'i' || param->conver == 'u'
+	|| param->conver == 'D' || param->conver == 'U')
 		param->base = 10;
 	else if (param->conver == 'o' || param->conver == 'O')
 		param->base = 8;
-	else if (param->conver == 'x' || param->conver == 'X' || param->conver == 'p')
+	else if (param->conver == 'x' || param->conver == 'X'
+	|| param->conver == 'p')
 		param->base = 16;
-	if (param->conver == 'D' || param->conver == 'O' || param->conver == 'U' || param->conver == 'S'
-							|| param->conver == 'C')
+	if (param->conver == 'D' || param->conver == 'O' || param->conver == 'U'
+	|| param->conver == 'S' || param->conver == 'C')
 	{
 		param->conver += 32;
 		param->lmodifier = e_modif_l;

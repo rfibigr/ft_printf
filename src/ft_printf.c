@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/07/30 21:46:31 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 11:55:36 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int	ft_printf(const char *str, ...)
 	char 		*str_cp_adress1;
 	va_list		ap;
 
-	if(!(str_cp = ft_strdup(str)))
+	if (!(str_cp = ft_strdup(str)))
 		return (-1);
 	str_cp_adress1 = str_cp;
 	initial_buff(&buff);
 	va_start(ap, str);
 	while (*str_cp != '\0')
 	{
-		if (!(read_str(&str_cp, &buff, &param)) /* && error_management(param) */)
+		if (!(read_str(&str_cp, &buff, &param))
+	/* && error_management(param) */)
 			return (-1);
 		assign_function(ap, param, &buff);
 	}

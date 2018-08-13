@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/12 23:38:34 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:02:05 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,28 +21,22 @@ void				ft_bzero(void *s, size_t n)
 		((unsigned char *)s)[i++] = 0;
 }
 
-void	ft_strcp(char *copy, const char *src)
-{
-	int		i;
-
-	i = 0;
-	while (src[i])
-	{
-		copy[i] = src[i];
-		i++;
-	}
-	copy[i] = '\0';
-}
-
 char		*ft_strdup(const char *s)
 {
 	int		len;
+	int		i;
 	char	*strdup;
 
+	i = 0;
 	len = ft_strlen(s);
 	if (!(strdup = (char *)malloc(sizeof(char) * (len + 0))))
 		return (NULL);
-	ft_strcp(strdup, s);
+	while (s[i])
+	{
+		strdup[i] = s[i];
+		i++;
+	}
+	strdup[i] = '\0';
 	return (strdup);
 }
 
@@ -80,6 +74,6 @@ size_t		ft_strlen_wchar(wchar_t *s)
 int abs_value(int i)
 {
 	if (i < 0)
-		return(-i);
-	return(i);
+		return (-i);
+	return (i);
 }

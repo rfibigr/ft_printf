@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/10 19:15:47 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/13 13:13:41 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 /******** DEFINE ********/
 
-# define BUFF_SIZE 100
+# define BUFF_SIZE 80
 
 /* Number of argument for differents parameter */
 # define FLAG_NUMBER 5
@@ -75,7 +75,7 @@ typedef struct		s_padding
 
 enum	e_flag
 {
-	e_flag_hashtag,
+	e_flag_hastag,
 	e_flag_zero,
 	e_flag_less,
 	e_flag_more,
@@ -143,6 +143,9 @@ void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff);
 int		size_ssizet_nbr(size_t arg, t_param param);
 void	print_signed_z(ssize_t arg, t_param *param, t_buff *buff);
 int		ft_print_wchar(wchar_t wc, t_buff *buff);
+void	write_2_bits(wchar_t wc, t_buff *buff);
+void	write_3_bits(wchar_t wc, t_buff *buff);
+void	write_4_bits(wchar_t wc, t_buff *buff);
 void	print_wchar(va_list ap, t_buff *buff, t_param param);
 int		print_strwchar(va_list ap, t_buff *buff, t_param param);
 size_t		ft_strlen_wchar(wchar_t *s);
