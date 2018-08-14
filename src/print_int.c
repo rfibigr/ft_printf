@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 16:21:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 12:54:14 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/14 11:47:20 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		size_u_nbr(unsigned int arg, t_param param)
 	int i;
 
 	i = 1;
-	if (arg == 0 && param.precision == 0 && param.flag[e_flag_hastag] == 0)
+	if (arg == 0 && param.precision == 0)
 		return (0);
 	while (arg / param.base)
 	{

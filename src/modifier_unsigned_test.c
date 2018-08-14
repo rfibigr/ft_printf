@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modifier_unsigned_1.c                              :+:      :+:    :+:   */
+/*   modifier_unsigned_test.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 13:58:16 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/14 17:44:28 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/14 15:39:44 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,10 @@ void	modifier_u_no(va_list ap, t_param param, t_buff *buff)
 	initialise_padding(&padding, size_u_nbr((unsigned int)arg,param), param);
 	if (arg == 0)
 		padding.arg_zero = TRUE;
-	if (param.conver == 'o')
-	{
-		padding_struct_o(&padding, &param);
-		padding_before_o(param, padding, buff);
-
-	}
-	else
-	{
-		padding_struct(&padding, param);
-		padding_before(param, padding, buff);
-	}
-	if (!(arg == 0 && param.precision == 0))
+	padding_struct_o(&padding, &param);
+	//printf("size=%d, flag#=%d, flag0=%d width=%d precision=%d\n", padding.size, param.flag[e_flag_hastag], param.flag[e_flag_zero], padding.width, padding.precision);
+	padding_before_o(param, padding, buff);
+	if (arg != 0)
 		print_unsigned_int((unsigned int)arg, &param, buff);
 	if (param.flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
@@ -46,6 +38,8 @@ void	initialise_padding(t_padding *padding, int size, t_param param)
 	padding-> precision = param.precision;
 	padding->arg_zero = FALSE;
 }
+
+
 
 void	modifier_u_hh(va_list ap, t_param param, t_buff *buff)
 {

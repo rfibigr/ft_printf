@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 11:52:14 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/14 15:45:28 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ void	print_sign(t_buff *buff, t_param param, t_padding padding)
 		add_buffer(buff, ' ');
 }
 
-void	print_hastag(t_buff *buff, t_param param, int precision)
+void	print_hastag(t_buff *buff, t_param param)
 {
-	if (!(param.conver == 'o' && precision >= 0))
-		add_buffer(buff, '0');
+	add_buffer(buff, '0');
 	if (param.conver == 'x' || param.conver == 'X')
 		add_buffer(buff, param.conver);
 }

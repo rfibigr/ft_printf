@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/08/13 12:44:42 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/08/14 15:52:35 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -31,6 +31,7 @@ SRC =	ft_printf.c \
 		printf_param.c\
 		assign_function.c \
 		padding_before.c \
+		padding_before2.c \
 		modifier_signed_1.c \
 		modifier_signed_2.c \
 		modifier_unsigned_1.c \
