@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/14 15:45:20 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/16 03:00:34 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_buff *buff, t_param param);
 void	ft_print_charact(int i, t_buff *buff, char c);
-void	padding_struct(t_padding *padding, t_param param);
+void	padding_struct(t_padding *padding, t_param *param);
 
 void	padding_struct_o(t_padding *padding, t_param *param);
 void	padding_before_o(t_param param, t_padding padding, t_buff *buff);

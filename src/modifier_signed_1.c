@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 13:58:16 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 11:58:18 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/16 03:37:19 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	modifier_s_no(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((int)arg,param), param);
 	if (arg < 0)
 		padding.sign = -1;
-	padding.size = size_nbr(arg, param);
-	padding_struct(&padding, param);
+	padding_struct(&padding, &param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param.precision == 0))
 		print_signed_int((int)arg, &param, buff);
@@ -37,10 +37,10 @@ void	modifier_s_hh(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (char)va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((char)arg,param), param);
 	if (arg < 0)
 		padding.sign = -1;
-	padding.size = size_nbr((char)arg, param);
-	padding_struct(&padding, param);
+	padding_struct(&padding, &param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param.precision == 0))
 		print_signed_int((char)arg, &param, buff);
@@ -55,10 +55,10 @@ void	modifier_s_h(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (short int)va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((short int)arg,param), param);
 	if (arg < 0)
 		padding.sign = -1;
-	padding.size = size_nbr((short int)arg, param);
-	padding_struct(&padding, param);
+	padding_struct(&padding, &param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param.precision == 0))
 		print_signed_int((short int)arg, &param, buff);
@@ -73,10 +73,10 @@ void	modifier_s_ll(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (long long int)va_arg(ap, long long int);
+	initialise_padding(&padding, size_l_nbr((long long int)arg,param), param);
 	if (arg < 0)
 		padding.sign = -1;
-	padding.size = size_l_nbr((long long int)arg, param);
-	padding_struct(&padding, param);
+	padding_struct(&padding, &param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param.precision == 0))
 		print_signed_l((long long int)arg, &param, buff);
@@ -91,10 +91,10 @@ void	modifier_s_l(va_list ap, t_param param, t_buff *buff)
 
 	padding.sign = 0;
 	arg = (long int)va_arg(ap, long int);
+	initialise_padding(&padding, size_l_nbr((long int)arg,param), param);
 	if (arg < 0)
 		padding.sign = -1;
-	padding.size = size_l_nbr((long int)arg, param);
-	padding_struct(&padding, param);
+	padding_struct(&padding, &param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param.precision == 0))
 		print_signed_l((long int)arg, &param, buff);

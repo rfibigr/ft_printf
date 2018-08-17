@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/14 15:45:28 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/16 03:15:19 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	print_sign(t_buff *buff, t_param param, t_padding padding)
 {
 	if (padding.sign == -1)
 		add_buffer(buff, '-');
-	if (param.flag[e_flag_more] && padding.sign == 0)
+	else if (param.flag[e_flag_more] && padding.sign == 0)
 		add_buffer(buff, '+');
-	if (param.flag[e_flag_space] && padding.sign == 0)
+	else if (param.flag[e_flag_space] && padding.sign == 0)
 		add_buffer(buff, ' ');
 }
 
