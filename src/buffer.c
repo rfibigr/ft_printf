@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/16 03:15:19 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/17 05:19:29 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ void	print_hastag(t_buff *buff, t_param param)
 void	print_percent(t_buff *buff, t_param param)
 {
 	if (param.flag[e_flag_less] == 0)
-		ft_print_charact(param.width - 1, buff, ' ');
+	{
+		if (param.flag[e_flag_zero] == 1)
+			ft_print_charact(param.width - 1, buff, '0');
+		else
+			ft_print_charact(param.width - 1, buff, ' ');
+	}
 	ft_print_charact(1, buff, '%');
 	if (param.flag[e_flag_less])
 		ft_print_charact(param.width - 1, buff, ' ');

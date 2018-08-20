@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/16 03:00:34 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/17 18:36:01 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	verif_min_width(char **str, t_param *param);
 void	verif_precision(char **str, t_param *param);
 void	verif_lmodifier(char **str, t_param *param);
 void	verif_conversion(char **str, t_param *param);
-void	assign_function(va_list ap, t_param param, t_buff *buff);
+int		assign_function(va_list ap, t_param param, t_buff *buff);
 void	modifier_hh(va_list ap, t_param param, t_buff *buff);
 void	print_hastag(t_buff *buff, t_param param);
 void	ft_print_charact(int i, t_buff *buff, char c);
@@ -122,7 +122,7 @@ void	print_adress(va_list ap, t_param param, t_buff *buff);
 int		size_adress(unsigned long adress);
 int		print_str(va_list ap, t_buff *buff, t_param param);
 void	add_buffer(t_buff *buff, char c);
-void	ft_print_str(t_buff *buff, char *str);
+void	ft_print_str(t_buff *buff, char *str, int precision);
 void	print_percent(t_buff *buff, t_param param);
 
 

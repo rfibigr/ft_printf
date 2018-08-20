@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 11:49:39 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/17 18:15:35 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 int		print_str(va_list ap, t_buff *buff, t_param param)
 {
-	char *str;
+	char 	*str;
+	int		len;
 
 	str = (char *)va_arg(ap, char*);
 	if (str == NULL)
+		len = 6;
+	else
+		len = ft_strlen(str);
+	padding_before_str(&param, len, buff);
+	if (str == NULL)
 	{
-		ft_print_str(buff, "(null)\0");
+		ft_print_str(buff, "(null)\0", param.precision);
+		if (param.flag[e_flag_less])
+			ft_print_charact(param.width, buff, ' ');
 		return (0);
 	}
-	padding_before_str(&param, ft_strlen(str), buff);
-
 	while (*str && param.precision > 0)
 	{
 		add_buffer(buff, *str);
@@ -58,11 +64,14 @@ void	ft_print_charact(int i, t_buff *buff, char c)
 	}
 }
 
-void	ft_print_str(t_buff *buff, char *str)
+void	ft_print_str(t_buff *buff, char *str, int precision)
 {
-	while (*str)
+	if (precision < 0)
+		precision = 6;
+	while (*str && precision > 0)
 	{
 		add_buffer(buff, *str);
 		str++;
+		precision--;
 	}
 }

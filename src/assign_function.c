@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 16:39:30 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/17 18:35:02 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	assign_function(va_list ap, t_param param, t_buff *buff)
+int		assign_function(va_list ap, t_param param, t_buff *buff)
 {
 	if (NUMBER_SIGNED(param.conver))
 		assign_signed_modifier(ap, param, buff);
@@ -29,7 +29,9 @@ void	assign_function(va_list ap, t_param param, t_buff *buff)
 	else if (param.conver == 'c' && param.lmodifier == e_modif_l)
 		print_wchar(ap, buff, param);
 	else if (param.conver == 's' && param.lmodifier == e_modif_l)
-		print_strwchar(ap, buff, param);
+		if(!(print_strwchar(ap, buff, param)))
+			return (0);
+	return(1);
 }
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)

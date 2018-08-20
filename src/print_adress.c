@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:36:21 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 21:42:32 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/17 15:16:56 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	print_adress(va_list ap, t_param param, t_buff *buff)
 		param.width = param.width - size - 2;
 	if (param.width > 0 && param.flag[e_flag_less] == 0 && param.flag[e_flag_zero] == 0)
 		ft_print_charact(param.width, buff, ' ');
-	ft_print_str(buff, "0x");
+	ft_print_str(buff, "0x", 2);
 	if (param.width > 0 && param.flag[e_flag_less] == 0 && param.flag[e_flag_zero] == 1)
 		ft_print_charact(param.width, buff, '0');
 	if (param.precision > 0)
