@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/17 18:35:02 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/21 15:08:51 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int		assign_function(va_list ap, t_param param, t_buff *buff)
 	else if (param.conver == '%')
 		print_percent(buff, param);
 	else if (param.conver == 'c' && param.lmodifier == e_modif_l)
-		print_wchar(ap, buff, param);
+	{
+		if(!(print_wchar(ap, buff, param)))
+			return (0);
+	}
 	else if (param.conver == 's' && param.lmodifier == e_modif_l)
 		if(!(print_strwchar(ap, buff, param)))
 			return (0);

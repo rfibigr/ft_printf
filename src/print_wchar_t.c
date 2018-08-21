@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/17 18:34:04 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/21 15:08:11 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param param)
 	return (1);
 }
 
-void	print_wchar(va_list ap, t_buff *buff, t_param param)
+int		print_wchar(va_list ap, t_buff *buff, t_param param)
 {
 	wchar_t wc;
 
@@ -56,9 +56,11 @@ void	print_wchar(va_list ap, t_buff *buff, t_param param)
 		else
 			ft_print_charact(param.width - 1, buff, ' ');
 	}
-	ft_print_wchar(wc, buff);
+	if (!(ft_print_wchar(wc, buff, &param)))
+		return(0);
 	if (param.flag[e_flag_less])
 		ft_print_charact(param.width - 1, buff, ' ');
+	return(1);
 }
 
 int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
@@ -66,13 +68,25 @@ int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
 	if (wc < 0)
 		return (0);
 	else if (wc < 0x80)
+	{
 		add_buffer(buff, wc);
-	else if (wc < 0x800)
+		param->precision--;
+	}
+	else if (wc < 0x800 && MB_CUR_MAX > 1)
+	{
 		write_2_bits(wc, buff);
-	else if (wc < 0x10000)
+		param->precision-=2;
+	}
+	else if (wc < 0x10000 && MB_CUR_MAX > 2)
+	{
 		write_3_bits(wc, buff);
-	else if (wc < 0x200000)
+		param->precision-=3;
+	}
+	else if (wc < 0x200000 && MB_CUR_MAX > 3)
+	{
 		write_4_bits(wc, buff);
+		param->precision-=4;
+	}
 	else
 		return (0);
 	return (1);
