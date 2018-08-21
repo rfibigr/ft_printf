@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 13:02:05 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/21 12:53:03 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void				ft_bzero(void *s, size_t n)
+void		ft_bzero(void *s, size_t n)
 {
 	size_t			i;
 

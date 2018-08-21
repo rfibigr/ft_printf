@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/08/16 03:05:10 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/08/21 12:52:40 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -28,9 +28,8 @@ NAME =		libftprintf.a
 SRC =	ft_printf.c \
 		read_str.c	\
 		verif_form.c \
-		printf_param.c\
 		assign_function.c \
-		padding_before3.c \
+		padding_before.c \
 		modifier_signed_1.c \
 		modifier_signed_2.c \
 		modifier_unsigned_1.c \
