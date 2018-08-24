@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   padding_before3.c                                  :+:      :+:    :+:   */
+/*   padding_before.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/17 04:23:01 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/24 19:06:34 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void	padding_before_str(t_param *param, int len, t_buff *buff)
 	else
 	{
 		if (param->precision > len)
-			param->width = param->width - len;
+			param->width -= len;
 		else
-			param->width = param->width - param->precision;
+			param->width -= param->precision;
 	}
 	if (param->width > 0 && param->flag[e_flag_less] == 0)
 	{

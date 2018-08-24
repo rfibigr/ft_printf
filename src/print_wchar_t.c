@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/21 15:08:11 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/24 19:06:34 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param param)
 	{
 		ft_print_str(buff, "(null)\0", param.precision);
 		if (param.flag[e_flag_less])
-		//retourn -1
 			ft_print_charact(param.width, buff, ' ');
 		return (1);
 	}
-	while (*str &&  param.precision > 0)
+	while (*str &&  param.precision >= ft_strlen_wchar_c(*str))
 	{
-		//calcul de la precisio pour affichage de wchat
 		if(!(ft_print_wchar(*str, buff, &param)))
 			return(0);
 		str = str + 1;
@@ -67,7 +65,12 @@ int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
 {
 	if (wc < 0)
 		return (0);
-	else if (wc < 0x80)
+	else if (wc < 0x80 && MB_CUR_MAX > 1)
+	{
+		add_buffer(buff, wc);
+		param->precision--;
+	}
+	else if (wc < 0x100 && MB_CUR_MAX == 1)
 	{
 		add_buffer(buff, wc);
 		param->precision--;

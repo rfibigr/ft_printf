@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/21 12:53:03 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/24 18:00:25 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,20 @@ size_t		ft_strlen_wchar(wchar_t *s)
 		s = s + 1;
 	}
 
+	return (i);
+}
+
+int		ft_strlen_wchar_c(wchar_t s)
+{
+	int i;
+
+	i = 1;
+	if (s >= 0x80 && s < 0x800 && MB_CUR_MAX > 1)
+		i = 2;
+	else if (s >= 0x800 && s < 0x10000 && MB_CUR_MAX > 1)
+		i = 3;
+	else if (s >= 0x10000 && s < 0x200000 && MB_CUR_MAX > 1)
+		i = 4;
 	return (i);
 }
 

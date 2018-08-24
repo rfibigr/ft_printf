@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 12:58:16 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/24 20:05:16 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int		read_str(char **str, t_buff *buff, t_param *param)
 {
+	char **str_save;
+
+	str_save = NULL;
 	initial_param(param);
 	while (**str != '\0')
 	{
@@ -22,9 +25,15 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 			*str = *str + 1;
 			if (**str == 0)
 				return (1);
-			if (!(verif_form(str, param)))
-				return (0);
-			return (1);
+			str_save = str;
+			if (!(verif_form(str, param, buff)))
+			{
+				str = str_save;
+				if (param->flag[e_flag_less] == 1)
+					*str = *str + 1;
+			}
+			else
+				return (1);
 		}
 		add_buffer(buff, **str);
 		*str = *str + 1;
@@ -32,7 +41,7 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 	return (1);
 }
 
-int		verif_form(char **str, t_param *param)
+int		verif_form(char **str, t_param *param, t_buff *buff)
 {
 	if (FLAG(**str))
 		verif_flag(str, param);
@@ -45,8 +54,27 @@ int		verif_form(char **str, t_param *param)
 	if (CONVERSION(**str))
 		verif_conversion(str, param);
 	else
+	{
+		padding_bad_conver(str, param, buff);
 		return (0);
+	}
 	return (1);
+}
+
+void	padding_bad_conver(char **str, t_param *param, t_buff *buff)
+{
+	if (param->flag[e_flag_less] == 0)
+	{
+		if (param->flag[e_flag_zero])
+			ft_print_charact(param->width - 1, buff, '0');
+		else
+			ft_print_charact(param->width - 1, buff, ' ');
+	}
+	else
+	{
+	ft_print_charact(1, buff, **str);
+	ft_print_charact(param->width - 1, buff, ' ');
+	}
 }
 
 void	initial_param(t_param *param)
