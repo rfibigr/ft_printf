@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/24 19:23:08 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 16:23:08 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ int		print_wchar(va_list ap, t_buff *buff, t_param param);
 int		print_strwchar(va_list ap, t_buff *buff, t_param param);
 size_t		ft_strlen_wchar(wchar_t *s);
 int		ft_strlen_wchar_c(wchar_t s);
+int		real_precision(wchar_t *str, int precision);
 
 
 void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff);

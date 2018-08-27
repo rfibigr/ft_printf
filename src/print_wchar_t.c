@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/24 19:06:34 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 18:59:40 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param param)
 	int		len;
 
 	str = (wchar_t *)va_arg(ap, wchar_t*);
-	if (str == NULL)
-		len = 6;
-	else
+	len = 6;
+	if (str != NULL)
 		len = ft_strlen_wchar(str);
+	// gestion de la precsion sur les string
+	if (param.precision > 0)
+		param.precision = real_precision(str, param.precision);
 	padding_before_str(&param, len, buff);
 	if (str == NULL)
 	{
@@ -39,6 +41,24 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param param)
 	if (param.flag[e_flag_less])
 		ft_print_charact(param.width, buff, ' ');
 	return (1);
+}
+
+int		real_precision(wchar_t *str, int precision)
+{
+	int wchar_precision;
+	int tmp;
+
+	wchar_precision = 0;
+	tmp = 0;
+	while (str)
+	{
+		tmp += ft_strlen_wchar_c(*str);
+		if (tmp > precision)
+			return(wchar_precision);
+		wchar_precision = tmp;
+		str = str + 1;
+	}
+	return(wchar_precision);
 }
 
 int		print_wchar(va_list ap, t_buff *buff, t_param param)

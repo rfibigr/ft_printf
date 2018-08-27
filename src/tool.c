@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/24 18:00:25 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 17:53:08 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,9 @@ size_t		ft_strlen_wchar(wchar_t *s)
 	i = 0;
 	while (*s)
 	{
-		if (*s >=0 && *s < 0x80)
-			i++;
-		else if (*s >= 0x80 && *s < 0x800)
-			i+=2;
-		else if (*s >= 0x800 && *s < 0x10000)
-			i+=3;
-		else if (*s >= 0x10000 && *s < 0x200000)
-			i+=4;
+		i += ft_strlen_wchar_c(*s);
 		s = s + 1;
 	}
-
 	return (i);
 }
 
