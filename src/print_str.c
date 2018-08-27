@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/21 15:11:00 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 13:03:04 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	print_char(va_list ap, t_buff *buff, t_param param)
 {
 	if (param.flag[e_flag_less] == 0)
 	{
-		if (param.flag[e_flag_zero])
+		if (param.flag[e_flag_zero] == TRUE)
 			ft_print_charact(param.width - 1, buff, '0');
 		else
 			ft_print_charact(param.width - 1, buff, ' ');
