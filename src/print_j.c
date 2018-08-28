@@ -6,23 +6,23 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/31 16:21:33 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/17 03:51:55 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		size_intmax_nbr(intmax_t arg, t_param param)
+int		size_intmax_nbr(intmax_t arg, t_param *param)
 {
 	int i;
 
 	i = 1;
-	if (arg == 0 && param.precision == 0)
+	if (arg == 0 && param->precision == 0)
 		return (0);
-	while (arg / param.base)
+	while (arg / param->base)
 	{
 		i++;
-		arg = arg / param.base;
+		arg = arg / param->base;
 	}
 	return (i);
 }
@@ -42,17 +42,17 @@ void		print_signed_j(intmax_t arg, t_param *param, t_buff *buff)
 	add_buffer(buff, (abs_value(arg % param->base)) + 'A' -10 + i_case);
 }
 
-int		size_u_intmax_nbr(uintmax_t arg, t_param param)
+int		size_u_intmax_nbr(uintmax_t arg, t_param *param)
 {
 	int i;
 
 	i = 1;
-	if (arg == 0 && param.precision == 0)
+	if (arg == 0 && param->precision == 0)
 		return (0);
-	while (arg / param.base)
+	while (arg / param->base)
 	{
 		i++;
-		arg = arg / param.base;
+		arg = arg / param->base;
 	}
 	return (i);
 }

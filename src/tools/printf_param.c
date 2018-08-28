@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_param.c                                     :+:      :+:    :+:   */
+/*   printf_param->c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,7 +24,7 @@ void	print_param(t_param param)
 		ft_putstr("flag[");
 		ft_putnbr(i);
 		ft_putstr("] = ");
-		ft_putnbr(param.flag[i]);
+		ft_putnbr(param->flag[i]);
 		ft_putchar('\n');
 		i++;
 	}
@@ -34,28 +34,28 @@ void	print_param(t_param param)
 	ft_putstr("width[");
 	ft_putnbr(i);
 	ft_putstr("] = ");
-	ft_putnbr(param.width);
+	ft_putnbr(param->width);
 	ft_putchar('\n');
 	ft_putchar('\n');
 
 	ft_putstr("precision[");
 	ft_putnbr(i);
 	ft_putstr("] = ");
-	ft_putnbr(param.precision);
+	ft_putnbr(param->precision);
 	ft_putchar('\n');
 	ft_putchar('\n');
 
 		ft_putstr("modif[");
 		ft_putnbr(i);
 		ft_putstr("] = ");
-		ft_putnbr(param.lmodifier);
+		ft_putnbr(param->lmodifier);
 		ft_putchar('\n');
 
 	ft_putchar('\n');
 		ft_putstr("conver[");
 		ft_putnbr(i);
 		ft_putstr("] = ");
-		ft_putchar(param.conver);
+		ft_putchar(param->conver);
 		ft_putchar('\n');
 }
 

@@ -6,38 +6,38 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/21 15:08:51 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 09:54:22 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		assign_function(va_list ap, t_param param, t_buff *buff)
+int		assign_function(va_list ap, t_param *param, t_buff *buff)
 {
-	if (NUMBER_SIGNED(param.conver))
+	if (NUMBER_SIGNED(param->conver))
 		assign_signed_modifier(ap, param, buff);
-	else if (NUMBER_UNSIGNED(param.conver))
+	else if (NUMBER_UNSIGNED(param->conver))
 		assign_unsigned_modifier(ap, param, buff);
-	else if (param.conver == 'p')
+	else if (param->conver == 'p')
 		print_adress(ap, param, buff);
-	else if (param.conver == 'c' && param.lmodifier != e_modif_l)
+	else if (param->conver == 'c' && param->lmodifier != e_modif_l)
 		print_char(ap, buff, param);
-	else if (param.conver == 's' && param.lmodifier != e_modif_l)
+	else if (param->conver == 's' && param->lmodifier != e_modif_l)
 		print_str(ap, buff, param);
-	else if (param.conver == '%')
+	else if (param->conver == '%')
 		print_percent(buff, param);
-	else if (param.conver == 'c' && param.lmodifier == e_modif_l)
+	else if (param->conver == 'c' && param->lmodifier == e_modif_l)
 	{
-		if(!(print_wchar(ap, buff, param)))
+		if (!(print_wchar(ap, buff, param)))
 			return (0);
 	}
-	else if (param.conver == 's' && param.lmodifier == e_modif_l)
-		if(!(print_strwchar(ap, buff, param)))
+	else if (param->conver == 's' && param->lmodifier == e_modif_l)
+		if (!(print_strwchar(ap, buff, param)))
 			return (0);
-	return(1);
+	return (1);
 }
 
-void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)
+void	assign_signed_modifier(va_list ap, t_param *param, t_buff *buff)
 {
 	modifier_signed[e_modif_no] = modifier_s_no;
 	modifier_signed[e_modif_hh] = modifier_s_hh;
@@ -46,10 +46,10 @@ void	assign_signed_modifier(va_list ap, t_param param, t_buff *buff)
 	modifier_signed[e_modif_l] = modifier_s_l;
 	modifier_signed[e_modif_j] = modifier_s_j;
 	modifier_signed[e_modif_z] = modifier_s_z;
-	modifier_signed[param.lmodifier](ap, param, buff);
+	modifier_signed[param->lmodifier](ap, param, buff);
 }
 
-void	assign_unsigned_modifier(va_list ap, t_param param, t_buff *buff)
+void	assign_unsigned_modifier(va_list ap, t_param *param, t_buff *buff)
 {
 	modifier_unsigned[e_modif_no] = modifier_u_no;
 	modifier_unsigned[e_modif_hh] = modifier_u_hh;
@@ -58,5 +58,5 @@ void	assign_unsigned_modifier(va_list ap, t_param param, t_buff *buff)
 	modifier_unsigned[e_modif_l] = modifier_u_l;
 	modifier_unsigned[e_modif_j] = modifier_u_j;
 	modifier_unsigned[e_modif_z] = modifier_u_z;
-	modifier_unsigned[param.lmodifier](ap, param, buff);
+	modifier_unsigned[param->lmodifier](ap, param, buff);
 }

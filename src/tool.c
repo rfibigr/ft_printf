@@ -6,11 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 17:53:08 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 22:40:08 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+
 
 void		ft_bzero(void *s, size_t n)
 {
@@ -21,24 +23,6 @@ void		ft_bzero(void *s, size_t n)
 		((unsigned char *)s)[i++] = 0;
 }
 
-char		*ft_strdup(const char *s)
-{
-	int		len;
-	int		i;
-	char	*strdup;
-
-	i = 0;
-	len = ft_strlen(s);
-	if (!(strdup = (char *)malloc(sizeof(char) * (len + 0))))
-		return (NULL);
-	while (s[i])
-	{
-		strdup[i] = s[i];
-		i++;
-	}
-	strdup[i] = '\0';
-	return (strdup);
-}
 
 size_t		ft_strlen(const char *s)
 {

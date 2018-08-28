@@ -6,18 +6,18 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 12:00:49 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	initialise_padding(t_padding *padding, int size, t_param param)
+void	initialise_padding(t_padding *padding, int size, t_param *param)
 {
 	padding->sign = 0;
 	padding->size = size;
-	padding->width = param.width - size;
-	padding->precision = param.precision - size;
+	padding->width = param->width - size;
+	padding->precision = param->precision - size;
 	if (padding->precision > 0)
 		padding->width -= padding->precision;
 	padding->arg_zero = FALSE;
@@ -51,32 +51,32 @@ void	padding_struct(t_padding *padding, t_param *param)
 	}
 }
 
-void	padding_before(t_param param, t_padding padding, t_buff *buff)
+void	padding_before(t_param *param, t_padding padding, t_buff *buff)
 {
-	if (padding.width > 0 && param.flag[e_flag_less] == 0)
+	if (padding.width > 0 && param->flag[e_flag_less] == 0)
 	{
-		if (param.flag[e_flag_zero] == TRUE)
+		if (param->flag[e_flag_zero] == TRUE)
 		{
-			if (NUMBER_SIGNED(param.conver) == 1)
+			if (NUMBER_SIGNED(param->conver) == 1)
 				print_sign(buff, param, padding);
-			if (param.flag[e_flag_hastag] == 1)
+			if (param->flag[e_flag_hastag] == 1)
 				print_hastag(buff, param);
 			ft_print_charact(padding.width, buff, '0');
 		}
 		else
 		{
 			ft_print_charact(padding.width, buff, ' ');
-			if (NUMBER_SIGNED(param.conver) == 1)
+			if (NUMBER_SIGNED(param->conver) == 1)
 				print_sign(buff, param, padding);
-			if (param.flag[e_flag_hastag] == 1)
+			if (param->flag[e_flag_hastag] == 1)
 				print_hastag(buff, param);
 		}
 	}
 	else
 	{
-		if (NUMBER_SIGNED(param.conver) == 1)
+		if (NUMBER_SIGNED(param->conver) == 1)
 			print_sign(buff, param, padding);
-		if (param.flag[e_flag_hastag] == 1)
+		if (param->flag[e_flag_hastag] == 1)
 			print_hastag(buff, param);
 	}
 	if (padding.precision > 0)

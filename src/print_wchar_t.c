@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 18:59:40 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_strwchar(va_list ap, t_buff *buff, t_param param)
+int		print_strwchar(va_list ap, t_buff *buff, t_param *param)
 {
 	wchar_t *str;
 	int		len;
@@ -22,24 +22,24 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param param)
 	if (str != NULL)
 		len = ft_strlen_wchar(str);
 	// gestion de la precsion sur les string
-	if (param.precision > 0)
-		param.precision = real_precision(str, param.precision);
-	padding_before_str(&param, len, buff);
+	if (param->precision > 0)
+		param->precision = real_precision(str, param->precision);
+	padding_before_str(param, len, buff);
 	if (str == NULL)
 	{
-		ft_print_str(buff, "(null)\0", param.precision);
-		if (param.flag[e_flag_less])
-			ft_print_charact(param.width, buff, ' ');
+		ft_print_str(buff, "(null)\0", param->precision);
+		if (param->flag[e_flag_less])
+			ft_print_charact(param->width, buff, ' ');
 		return (1);
 	}
-	while (*str &&  param.precision >= ft_strlen_wchar_c(*str))
+	while (*str &&  param->precision >= ft_strlen_wchar_c(*str))
 	{
-		if(!(ft_print_wchar(*str, buff, &param)))
+		if(!(ft_print_wchar(*str, buff, param)))
 			return(0);
 		str = str + 1;
 	}
-	if (param.flag[e_flag_less])
-		ft_print_charact(param.width, buff, ' ');
+	if (param->flag[e_flag_less])
+		ft_print_charact(param->width, buff, ' ');
 	return (1);
 }
 
@@ -61,23 +61,23 @@ int		real_precision(wchar_t *str, int precision)
 	return(wchar_precision);
 }
 
-int		print_wchar(va_list ap, t_buff *buff, t_param param)
+int		print_wchar(va_list ap, t_buff *buff, t_param *param)
 {
 	wchar_t wc;
 
 	wc = (wchar_t)va_arg(ap, wchar_t);
 	// onpuet integrer direcement la variable dans ft_print ( voir char)
-	if (param.flag[e_flag_less] == FALSE)
+	if (param->flag[e_flag_less] == FALSE)
 	{
-		if (param.flag[e_flag_zero])
-			ft_print_charact(param.width - 1, buff, '0');
+		if (param->flag[e_flag_zero])
+			ft_print_charact(param->width - 1, buff, '0');
 		else
-			ft_print_charact(param.width - 1, buff, ' ');
+			ft_print_charact(param->width - 1, buff, ' ');
 	}
-	if (!(ft_print_wchar(wc, buff, &param)))
+	if (!(ft_print_wchar(wc, buff, param)))
 		return(0);
-	if (param.flag[e_flag_less])
-		ft_print_charact(param.width - 1, buff, ' ');
+	if (param->flag[e_flag_less])
+		ft_print_charact(param->width - 1, buff, ' ');
 	return(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 13:06:37 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/27 22:40:08 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,6 @@ void	verif_conversion(char **str, t_param *param)
 		param->conver += 32;
 		param->lmodifier = e_modif_l;
 	}
-	//error moulitest - Remettre dans verif precision
 	if (param->precision >= 0 && param->conver != 'c' && param->conver != 's'
 		&& param->conver != '%')
 		param->flag[e_flag_zero] = FALSE;
