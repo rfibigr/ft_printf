@@ -1,98 +1,103 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modifier_unsigned_1.c                              :+:      :+:    :+:   */
+/*   modifier_signed_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/25 13:58:16 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:06 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 15:05:00 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	modifier_u_no(va_list ap, t_param *param, t_buff *buff)
+void	modifier_s_no(va_list ap, t_param *param, t_buff *buff)
 {
-	unsigned int arg;
+	int arg;
 	t_padding padding;
 
-	arg = (unsigned int)va_arg(ap, unsigned int);
-	initialise_padding(&padding, size_u_nbr((unsigned int)arg,param), param);
-	if (arg == 0)
-		padding.arg_zero = TRUE;
+	padding.sign = 0;
+	arg = va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((int)arg, param), param);
+	if (arg < 0)
+		padding.sign = -1;
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param->precision == 0))
-		print_unsigned_int((unsigned int)arg, param, buff);
+		print_signed((int)arg, param, buff);
 	if (param->flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
 }
 
-void	modifier_u_hh(va_list ap, t_param *param, t_buff *buff)
+void	modifier_s_hh(va_list ap, t_param *param, t_buff *buff)
 {
-	unsigned char arg;
+	char arg;
 	t_padding padding;
 
-	arg = (unsigned char)va_arg(ap, unsigned int);
-	initialise_padding(&padding, size_u_nbr((unsigned char)arg,param), param);
-	if (arg == 0)
-		padding.arg_zero = TRUE;
+	padding.sign = 0;
+	arg = (char)va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((char)arg,param), param);
+	if (arg < 0)
+		padding.sign = -1;
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param->precision == 0))
-		print_unsigned_int((unsigned char)arg, param, buff);
+		print_signed((char)arg, param, buff);
 	if (param->flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
 }
 
-void	modifier_u_h(va_list ap, t_param *param, t_buff *buff)
+void	modifier_s_h(va_list ap, t_param *param, t_buff *buff)
 {
-	unsigned short int arg;
+	short int arg;
 	t_padding padding;
 
-	arg = (unsigned short int)va_arg(ap, unsigned int);
-	initialise_padding(&padding, size_u_nbr((unsigned short int)arg,param), param);
-	if (arg == 0)
-		padding.arg_zero = TRUE;
+	padding.sign = 0;
+	arg = (short int)va_arg(ap, int);
+	initialise_padding(&padding, size_nbr((short int)arg,param), param);
+	if (arg < 0)
+		padding.sign = -1;
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param->precision == 0))
-		print_unsigned_int((unsigned short int)arg, param, buff);
+		print_signed((short int)arg, param, buff);
 	if (param->flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
 }
 
-void	modifier_u_ll(va_list ap, t_param *param, t_buff *buff)
+void	modifier_s_ll(va_list ap, t_param *param, t_buff *buff)
 {
-	unsigned long long int arg;
+	long long int arg;
 	t_padding padding;
 
-	arg = (unsigned long long int)va_arg(ap, unsigned long long int);
-	initialise_padding(&padding, size_lu_nbr((unsigned long long int)arg,param), param);
-	if (arg == 0)
-		padding.arg_zero = TRUE;
+	padding.sign = 0;
+	arg = (long long int)va_arg(ap, long long int);
+	initialise_padding(&padding, size_nbr((long long int)arg,param), param);
+	if (arg < 0)
+		padding.sign = -1;
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param->precision == 0))
-		print_unsigned_l((unsigned long long int)arg, param, buff);
+		print_signed((long long int)arg, param, buff);
 	if (param->flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
 }
 
-void	modifier_u_l(va_list ap, t_param *param, t_buff *buff)
+void	modifier_s_l(va_list ap, t_param *param, t_buff *buff)
 {
-	unsigned long int arg;
+	long int arg;
 	t_padding padding;
 
-	arg = (unsigned long int)va_arg(ap, unsigned long int);
-	initialise_padding(&padding, size_lu_nbr((unsigned long int)arg,param), param);
-	if (arg == 0)
-		padding.arg_zero = TRUE;
+	padding.sign = 0;
+	arg = (long int)va_arg(ap, long int);
+	initialise_padding(&padding, size_nbr((long int)arg,param), param);
+	if (arg < 0)
+		padding.sign = -1;
 	padding_struct(&padding, param);
 	padding_before(param, padding, buff);
 	if (!(arg == 0 && param->precision == 0))
-		print_unsigned_l((unsigned long int)arg, param, buff);
+		print_signed((long int)arg, param, buff);
 	if (param->flag[e_flag_less])
 		ft_print_charact(padding.width, buff, ' ');
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_wchar_t_2.c                                  :+:      :+:    :+:   */
+/*   write_byte.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/13 12:44:26 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 16:31:24 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	write_2_bits(wchar_t wc, t_buff *buff)
 {
 	unsigned char	tmp;
 	unsigned char	c;
-
-	tmp = 0;
 
 	tmp = 0b00011111 & (wc >> 6);
 	c = tmp | 0b11000000;
@@ -31,8 +29,6 @@ void	write_3_bits(wchar_t wc, t_buff *buff)
 {
 	unsigned char	tmp;
 	unsigned char	c;
-
-	tmp = 0;
 
 	tmp = 0b00001111 & (wc >> 12);
 	c = tmp | 0b11100000;
@@ -50,7 +46,6 @@ void	write_4_bits(wchar_t wc, t_buff *buff)
 	unsigned char	tmp;
 	unsigned char	c;
 
-	tmp = 0;
 	tmp = 0b00000111 & (wc >> 18);
 	c = tmp | 0b11110000;
 	add_buffer(buff, c);

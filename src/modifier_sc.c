@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_str.c                                        :+:      :+:    :+:   */
+/*   modifier_sc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 16:25:50 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,20 @@ int		print_str(va_list ap, t_buff *buff, t_param *param)
 	int		len;
 
 	str = (char *)va_arg(ap, char*);
-	if (str == NULL)
-		len = 6;
-	else
+	len = 6;
+	if (str != NULL)
 		len = ft_strlen(str);
 	padding_before_str(param, len, buff);
 	if (str == NULL)
-	{
 		ft_print_str(buff, "(null)\0", param->precision);
-		if (param->flag[e_flag_less])
-			ft_print_charact(param->width, buff, ' ');
-		return (0);
-	}
-	while (*str && param->precision > 0)
+	else
 	{
-		add_buffer(buff, *str);
-		str = str + 1;
-		param->precision--;
+		while (*str && param->precision > 0)
+		{
+			add_buffer(buff, *str);
+			str = str + 1;
+			param->precision--;
+		}
 	}
 	if (param->flag[e_flag_less])
 		ft_print_charact(param->width, buff, ' ');

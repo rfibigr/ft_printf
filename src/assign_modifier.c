@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/13 17:03:37 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 09:54:22 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 14:55:52 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		assign_function(va_list ap, t_param *param, t_buff *buff)
 {
+	//creer un tableau de fonction
 	if (NUMBER_SIGNED(param->conver))
 		assign_signed_modifier(ap, param, buff);
 	else if (NUMBER_UNSIGNED(param->conver))
@@ -46,6 +47,7 @@ void	assign_signed_modifier(va_list ap, t_param *param, t_buff *buff)
 	modifier_signed[e_modif_l] = modifier_s_l;
 	modifier_signed[e_modif_j] = modifier_s_j;
 	modifier_signed[e_modif_z] = modifier_s_z;
+
 	modifier_signed[param->lmodifier](ap, param, buff);
 }
 
@@ -58,5 +60,6 @@ void	assign_unsigned_modifier(va_list ap, t_param *param, t_buff *buff)
 	modifier_unsigned[e_modif_l] = modifier_u_l;
 	modifier_unsigned[e_modif_j] = modifier_u_j;
 	modifier_unsigned[e_modif_z] = modifier_u_z;
+
 	modifier_unsigned[param->lmodifier](ap, param, buff);
 }

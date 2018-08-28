@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 15:43:17 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,30 +57,38 @@ void	padding_before(t_param *param, t_padding padding, t_buff *buff)
 	{
 		if (param->flag[e_flag_zero] == TRUE)
 		{
-			if (NUMBER_SIGNED(param->conver) == 1)
-				print_sign(buff, param, padding);
-			if (param->flag[e_flag_hastag] == 1)
-				print_hastag(buff, param);
+			print_sign_hastag(param, buff, padding);
 			ft_print_charact(padding.width, buff, '0');
 		}
 		else
 		{
 			ft_print_charact(padding.width, buff, ' ');
-			if (NUMBER_SIGNED(param->conver) == 1)
-				print_sign(buff, param, padding);
-			if (param->flag[e_flag_hastag] == 1)
-				print_hastag(buff, param);
+			print_sign_hastag(param, buff, padding);
 		}
 	}
 	else
-	{
-		if (NUMBER_SIGNED(param->conver) == 1)
-			print_sign(buff, param, padding);
-		if (param->flag[e_flag_hastag] == 1)
-			print_hastag(buff, param);
-	}
+		print_sign_hastag(param, buff, padding);
 	if (padding.precision > 0)
 		ft_print_charact(padding.precision, buff, '0');
+}
+
+void	print_sign_hastag(t_param *param, t_buff *buff, t_padding padding)
+{
+		if (NUMBER_SIGNED(param->conver) == 1)
+		{
+			if (padding.sign == -1)
+				add_buffer(buff, '-');
+			else if (param->flag[e_flag_more] && padding.sign == 0)
+				add_buffer(buff, '+');
+			else if (param->flag[e_flag_space] && padding.sign == 0)
+				add_buffer(buff, ' ');
+		}
+		if (param->flag[e_flag_hastag] == 1)
+		{
+			add_buffer(buff, '0');
+			if (param->conver == 'x' || param->conver == 'X')
+				add_buffer(buff, param->conver);
+		}
 }
 
 void	padding_before_str(t_param *param, int len, t_buff *buff)

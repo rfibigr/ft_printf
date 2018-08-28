@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:47:36 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 15:35:59 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void	padding_struct(t_padding *padding, t_param *param);
 
 void	padding_struct_o(t_padding *padding, t_param *param);
 void	padding_before_o(t_param *param, t_padding padding, t_buff *buff);
+void	print_sign_hastag(t_param *param, t_buff *buff, t_padding padding);
 
 void	padding_before(t_param *param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param *param, t_padding padding);
@@ -131,23 +132,20 @@ void	padding_before_str(t_param *param, int len, t_buff *buff);
 void	print_char(va_list ap, t_buff *buff, t_param *param);
 void	initialise_padding(t_padding *padding, int size, t_param *param);
 
-int		size_nbr(int arg, t_param *param);
-void	print_signed_int(int arg, t_param *param, t_buff *buff);
-int		size_l_nbr(long long int arg, t_param *param);
-void	print_signed_l(long long int arg, t_param *param, t_buff *buff);
+int		size_nbr(long long int arg, t_param *param);
+void	print_signed(long long int arg, t_param *param, t_buff *buff);
 int		size_intmax_nbr(intmax_t arg, t_param *param);
 void	print_signed_j(intmax_t arg, t_param *param, t_buff *buff);
 int		size_sizet_nbr(size_t arg, t_param *param);
 void	print_unsigned_z(size_t arg, t_param *param, t_buff *buff);
 
-int		size_u_nbr(unsigned int arg, t_param *param);
-void	print_unsigned_int(unsigned int arg, t_param *param, t_buff *buff);
-int		size_lu_nbr(unsigned long long int arg, t_param *param);
-void	print_unsigned_l(unsigned long long int arg, t_param *param, t_buff *buff);
+int		size_u_nbr(unsigned long long int arg, t_param *param);
+void	print_unsigned(unsigned long long int arg, t_param *param, t_buff *buff);
 int		size_u_intmax_nbr(uintmax_t arg, t_param *param);
 void	print_unsigned_j(uintmax_t arg, t_param *param, t_buff *buff);
 int		size_ssizet_nbr(size_t arg, t_param *param);
 void	print_signed_z(ssize_t arg, t_param *param, t_buff *buff);
+
 int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param);
 void	write_2_bits(wchar_t wc, t_buff *buff);
 void	write_3_bits(wchar_t wc, t_buff *buff);

@@ -6,13 +6,11 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:08 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 16:44:19 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-
 
 void		ft_bzero(void *s, size_t n)
 {
@@ -22,7 +20,6 @@ void		ft_bzero(void *s, size_t n)
 	while (i < n)
 		((unsigned char *)s)[i++] = 0;
 }
-
 
 size_t		ft_strlen(const char *s)
 {

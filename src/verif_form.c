@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:08 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 16:30:22 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	verif_flag(char **str, t_param *param)
 		param->flag[e_flag_zero] = FALSE;
 	if (param->flag[e_flag_more])
 		param->flag[e_flag_space] = FALSE;
-
 }
 
 void	verif_min_width(char **str, t_param *param)

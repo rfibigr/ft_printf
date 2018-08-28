@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_wchar_t.c                                    :+:      :+:    :+:   */
+/*   modifier_sc_cap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:07 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/28 16:13:20 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,19 @@ int		print_strwchar(va_list ap, t_buff *buff, t_param *param)
 	len = 6;
 	if (str != NULL)
 		len = ft_strlen_wchar(str);
-	// gestion de la precsion sur les string
 	if (param->precision > 0)
 		param->precision = real_precision(str, param->precision);
 	padding_before_str(param, len, buff);
 	if (str == NULL)
-	{
 		ft_print_str(buff, "(null)\0", param->precision);
-		if (param->flag[e_flag_less])
-			ft_print_charact(param->width, buff, ' ');
-		return (1);
-	}
-	while (*str &&  param->precision >= ft_strlen_wchar_c(*str))
+	else
 	{
-		if(!(ft_print_wchar(*str, buff, param)))
-			return(0);
-		str = str + 1;
+		while (*str &&  param->precision >= ft_strlen_wchar_c(*str))
+		{
+			if(!(ft_print_wchar(*str, buff, param)))
+				return(0);
+			str = str + 1;
+		}
 	}
 	if (param->flag[e_flag_less])
 		ft_print_charact(param->width, buff, ' ');
