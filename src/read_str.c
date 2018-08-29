@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:44:19 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 12:16:18 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void	initial_param(t_param *param)
 	param->lmodifier = e_modif_no;
 	param->precision = -1;
 	param->width = 0;
+	param->econv = -1;
 }
 
 void	initial_buff(t_buff *buff)

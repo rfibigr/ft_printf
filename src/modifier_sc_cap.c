@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:13:20 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 11:27:54 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_strwchar(va_list ap, t_buff *buff, t_param *param)
+int		print_strwchar(va_list ap, t_param *param, t_buff *buff)
 {
 	wchar_t *str;
 	int		len;
@@ -58,7 +58,7 @@ int		real_precision(wchar_t *str, int precision)
 	return(wchar_precision);
 }
 
-int		print_wchar(va_list ap, t_buff *buff, t_param *param)
+int		print_wchar(va_list ap, t_param *param, t_buff *buff)
 {
 	wchar_t wc;
 

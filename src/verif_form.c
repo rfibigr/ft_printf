@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:30:22 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 17:00:48 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,13 +89,16 @@ void	verif_conversion(char **str, t_param *param)
 	else if (param->conver == 'x' || param->conver == 'X'
 	|| param->conver == 'p')
 		param->base = 16;
-	if (param->conver == 'D' || param->conver == 'O' || param->conver == 'U'
-	|| param->conver == 'S' || param->conver == 'C')
+	if (param->conver == 'D' || param->conver == 'O' || param->conver == 'U')
 	{
 		param->conver += 32;
 		param->lmodifier = e_modif_l;
 	}
 	if (param->precision >= 0 && param->conver != 'c' && param->conver != 's'
-		&& param->conver != '%')
+		&& param->conver != 'C' && param->conver != 'S' && param->conver != '%')
 		param->flag[e_flag_zero] = FALSE;
+	if (param->conver == 'c' && param->lmodifier == e_modif_l)
+		param->conver = 'C';
+	else if (param->conver == 's' && param->lmodifier == e_modif_l)
+		param->conver = 'S';
 }

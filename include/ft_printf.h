@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 15:35:59 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 16:26:18 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct		s_param
 		int		precision;
 		int		width;
 		int		sign;
+		int		econv;
 }					t_param;
 
 typedef struct		s_padding
@@ -72,6 +73,9 @@ typedef struct		s_padding
 		int		size;
 		int		arg_zero;
 }					t_padding;
+
+typedef void	(*f_m)(va_list, t_param *, t_buff *);
+typedef int		(*f_a)(va_list, t_param *, t_buff *);
 
 enum	e_flag
 {
@@ -91,6 +95,18 @@ enum	e_modifier
 	e_modif_l,
 	e_modif_j,
 	e_modif_z,
+};
+
+enum 	e_conv
+{
+	e_conv_di,
+	e_conv_oux,
+	e_conv_p,
+	e_conv_c,
+	e_conv_s,
+	e_conv_lc,
+	e_conv_ls,
+	e_conv_percent,
 };
 
 /******** DECLARATION OF FONCTIONS ********/
@@ -120,16 +136,16 @@ void	print_sign_hastag(t_param *param, t_buff *buff, t_padding padding);
 void	padding_before(t_param *param, t_padding padding, t_buff *buff);
 void	print_sign(t_buff *buff, t_param *param, t_padding padding);
 void	str_upper(char *str[16]);
-void	print_adress(va_list ap, t_param *param, t_buff *buff);
+int		print_adress(va_list ap, t_param *param, t_buff *buff);
 int		size_adress(unsigned long adress);
-int		print_str(va_list ap, t_buff *buff, t_param *param);
+int		print_str(va_list ap, t_param *param, t_buff *buff);
 void	add_buffer(t_buff *buff, char c);
 void	ft_print_str(t_buff *buff, char *str, int precision);
-void	print_percent(t_buff *buff, t_param *param);
+int		print_percent(va_list ap, t_param *param, t_buff *buff);
 
 
 void	padding_before_str(t_param *param, int len, t_buff *buff);
-void	print_char(va_list ap, t_buff *buff, t_param *param);
+int		print_char(va_list ap, t_param *param, t_buff *buff);
 void	initialise_padding(t_padding *padding, int size, t_param *param);
 
 int		size_nbr(long long int arg, t_param *param);
@@ -150,14 +166,16 @@ int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param);
 void	write_2_bits(wchar_t wc, t_buff *buff);
 void	write_3_bits(wchar_t wc, t_buff *buff);
 void	write_4_bits(wchar_t wc, t_buff *buff);
-int		print_wchar(va_list ap, t_buff *buff, t_param *param);
-int		print_strwchar(va_list ap, t_buff *buff, t_param *param);
+int		print_wchar(va_list ap, t_param *param, t_buff *buff);
+int		print_strwchar(va_list ap, t_param *param, t_buff *buff);
 size_t		ft_strlen_wchar(wchar_t *s);
 int		ft_strlen_wchar_c(wchar_t s);
 int		real_precision(wchar_t *str, int precision);
 
 
-void	assign_signed_modifier(va_list ap, t_param *param, t_buff *buff);
+int		enum_conv(t_param *param);
+
+int		assign_signed_modifier(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_no(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_hh(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_h(va_list ap, t_param *param, t_buff *buff);
@@ -165,8 +183,9 @@ void	modifier_s_l(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_ll(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_j(va_list ap, t_param *param, t_buff *buff);
 void	modifier_s_z(va_list ap, t_param *param, t_buff *buff);
-void	(*modifier_signed[8])(va_list, t_param *, t_buff *);
-void	assign_unsigned_modifier(va_list ap, t_param *param, t_buff *buff);
+
+
+int		assign_unsigned_modifier(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_no(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_hh(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_h(va_list ap, t_param *param, t_buff *buff);
@@ -174,7 +193,6 @@ void	modifier_u_l(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_ll(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_j(va_list ap, t_param *param, t_buff *buff);
 void	modifier_u_z(va_list ap, t_param *param, t_buff *buff);
-void	(*modifier_unsigned[8])(va_list, t_param *, t_buff *);
 
 
 void	print_param(t_param *param);

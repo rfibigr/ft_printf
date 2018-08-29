@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:36:21 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:17:51 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 11:38:45 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_adress(va_list ap, t_param *param, t_buff *buff)
+int		print_adress(va_list ap, t_param *param, t_buff *buff)
 {
 	int size;
 	unsigned long long int arg;
@@ -38,4 +38,5 @@ void	print_adress(va_list ap, t_param *param, t_buff *buff)
 	}
 	if (param->width > 0 && param->flag[e_flag_less] == 1)
 		ft_print_charact(param->width, buff, ' ');
+	return(1);
 }

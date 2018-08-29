@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:25:50 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 12:09:40 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_str(va_list ap, t_buff *buff, t_param *param)
+int		print_str(va_list ap, t_param *param, t_buff *buff)
 {
 	char 	*str;
 	int		len;
@@ -38,7 +38,7 @@ int		print_str(va_list ap, t_buff *buff, t_param *param)
 	return (1);
 }
 
-void	print_char(va_list ap, t_buff *buff, t_param *param)
+int		print_char(va_list ap, t_param *param, t_buff *buff)
 {
 	if (param->flag[e_flag_less] == 0)
 	{
@@ -50,6 +50,7 @@ void	print_char(va_list ap, t_buff *buff, t_param *param)
 	ft_print_charact(1, buff, (char)va_arg(ap, int));
 	if (param->flag[e_flag_less])
 		ft_print_charact(param->width - 1, buff, ' ');
+	return (1);
 }
 
 void	ft_print_charact(int i, t_buff *buff, char c)

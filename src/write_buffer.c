@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/26 14:26:24 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 15:43:38 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 16:10:55 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ void	write_buffer(t_buff *buff, int i_buff)
 	buff->size += tmp;
 }
 
-void	print_percent(t_buff *buff, t_param *param)
+int		print_percent(va_list ap, t_param *param, t_buff *buff)
 {
+	(void)ap;
 	if (param->flag[e_flag_less] == 0)
 	{
 		if (param->flag[e_flag_zero] == 1)
@@ -43,4 +44,5 @@ void	print_percent(t_buff *buff, t_param *param)
 	ft_print_charact(1, buff, '%');
 	if (param->flag[e_flag_less])
 		ft_print_charact(param->width - 1, buff, ' ');
+	return (1);
 }

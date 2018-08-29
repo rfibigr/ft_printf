@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/27 22:40:06 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 12:20:28 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ int	ft_printf(const char *str, ...)
 	{
 		if (!(read_str(&str_cp, &buff, &param)))
 			return (-1);
-		if(!(assign_function(ap, &param, &buff)))
-			return(-1);
+		if (param.conver != 0)
+			if(!(assign_function(ap, &param, &buff)))
+				return(-1);
 	}
 	write_buffer(&buff, buff.i);
 	va_end(ap);
