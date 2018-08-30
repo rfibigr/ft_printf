@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/30 09:36:13 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/30 09:57:29 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
 		if (wc < byte[i] && (int)MB_CUR_MAX > i)
 			{
 				w_byte[i](buff, wc);
-				param->precision -= i;
+				param->precision -= i + 1;
 				return (1);
 			}
 		i++;
