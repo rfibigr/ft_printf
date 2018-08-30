@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   write_byte.c                                       :+:      :+:    :+:   */
+/*   print_byte.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:31:24 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 18:45:17 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	write_2_bits(wchar_t wc, t_buff *buff)
+void	write_1_byte(t_buff *buff, wchar_t wc)
+{
+	unsigned char	c;
+
+	c = (char)wc;
+	add_buffer(buff, c);
+}
+
+void	write_2_bytes(t_buff *buff, wchar_t wc)
 {
 	unsigned char	tmp;
 	unsigned char	c;
@@ -25,7 +33,7 @@ void	write_2_bits(wchar_t wc, t_buff *buff)
 	add_buffer(buff, c);
 }
 
-void	write_3_bits(wchar_t wc, t_buff *buff)
+void	write_3_bytes(t_buff *buff, wchar_t wc)
 {
 	unsigned char	tmp;
 	unsigned char	c;
@@ -41,7 +49,7 @@ void	write_3_bits(wchar_t wc, t_buff *buff)
 	add_buffer(buff, c);
 }
 
-void	write_4_bits(wchar_t wc, t_buff *buff)
+void	write_4_bytes(t_buff *buff, wchar_t wc)
 {
 	unsigned char	tmp;
 	unsigned char	c;

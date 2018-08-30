@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/29 16:26:18 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/08/29 18:44:52 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct		s_padding
 
 typedef void	(*f_m)(va_list, t_param *, t_buff *);
 typedef int		(*f_a)(va_list, t_param *, t_buff *);
+typedef void	(*f_b)(t_buff *, wchar_t);
 
 enum	e_flag
 {
@@ -163,9 +164,10 @@ int		size_ssizet_nbr(size_t arg, t_param *param);
 void	print_signed_z(ssize_t arg, t_param *param, t_buff *buff);
 
 int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param);
-void	write_2_bits(wchar_t wc, t_buff *buff);
-void	write_3_bits(wchar_t wc, t_buff *buff);
-void	write_4_bits(wchar_t wc, t_buff *buff);
+void	write_1_byte(t_buff *buff, wchar_t wc);
+void	write_2_bytes(t_buff *buff, wchar_t wc);
+void	write_3_bytes(t_buff *buff, wchar_t wc);
+void	write_4_bytes(t_buff *buff, wchar_t wc);
 int		print_wchar(va_list ap, t_param *param, t_buff *buff);
 int		print_strwchar(va_list ap, t_param *param, t_buff *buff);
 size_t		ft_strlen_wchar(wchar_t *s);
