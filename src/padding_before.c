@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 10:24:35 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 19:36:12 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ void	padding_struct(t_padding *padding, t_param *param)
 			param->flag[e_flag_hastag] = 0;
 		if (param->flag[e_flag_hastag] == 1)
 		{
-			padding->width -= 1;
+			if (padding->precision < 1)
+				padding->width -= 1;
 			padding->precision -= 1;
 		}
 	}
