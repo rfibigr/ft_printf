@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 16:11:49 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 17:38:25 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include <math.h>
 
-# define BUFF_SIZE 80
+# define BUFF_SIZE 60
 # define FLAG_NUMBER 5
 # define TRUE 1
 # define FALSE 0
