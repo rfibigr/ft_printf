@@ -6,18 +6,18 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/30 09:57:29 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 17:32:59 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_strwchar(va_list ap, t_param *param, t_buff *buff)
+int		print_strwchar(va_list *ap, t_param *param, t_buff *buff)
 {
 	wchar_t *str;
 	int		len;
 
-	str = (wchar_t *)va_arg(ap, wchar_t*);
+	str = (wchar_t *)va_arg(*ap, wchar_t*);
 	len = 6;
 	if (str != NULL)
 		len = ft_strlen_wchar(str);
@@ -28,10 +28,10 @@ int		print_strwchar(va_list ap, t_param *param, t_buff *buff)
 		ft_print_str(buff, "(null)\0", param->precision);
 	else
 	{
-		while (*str &&  param->precision >= ft_strlen_wchar_c(*str))
+		while (*str && param->precision >= ft_strlen_wchar_c(*str))
 		{
-			if(!(ft_print_wchar(*str, buff, param)))
-				return(0);
+			if (!(ft_print_wchar(*str, buff, param)))
+				return (0);
 			str = str + 1;
 		}
 	}
@@ -51,41 +51,43 @@ int		real_precision(wchar_t *str, int precision)
 	{
 		tmp += ft_strlen_wchar_c(*str);
 		if (tmp > precision)
-			return(wchar_precision);
+			return (wchar_precision);
 		wchar_precision = tmp;
 		str = str + 1;
 	}
-	return(wchar_precision);
+	return (wchar_precision);
 }
 
-int		print_wchar(va_list ap, t_param *param, t_buff *buff)
+int		print_wchar(va_list *ap, t_param *param, t_buff *buff)
 {
 	wchar_t wc;
+	int		real_len;
 
-	wc = (wchar_t)va_arg(ap, wchar_t);
-	// onpuet integrer direcement la variable dans ft_print ( voir char)
+	wc = (wchar_t)va_arg(*ap, wchar_t);
+	real_len = ft_strlen_wchar_c(wc);
 	if (param->flag[e_flag_less] == FALSE)
 	{
 		if (param->flag[e_flag_zero])
-			ft_print_charact(param->width - 1, buff, '0');
+			ft_print_charact(param->width - real_len, buff, '0');
 		else
-			ft_print_charact(param->width - 1, buff, ' ');
+			ft_print_charact(param->width - real_len, buff, ' ');
 	}
 	if (!(ft_print_wchar(wc, buff, param)))
 		return (0);
 	if (param->flag[e_flag_less])
-		ft_print_charact(param->width - 1, buff, ' ');
+		ft_print_charact(param->width - real_len, buff, ' ');
 	return (1);
 }
 
 int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
 {
-	int byte[5] = {0x80, 0x800, 0x10000, 0x200000};
-	int i;
-	f_b w_byte[4] = {write_1_byte, write_2_bytes, write_3_bytes, write_4_bytes};
+	static int		byte[4] = {0x80, 0x800, 0x10000, 0x200000};
+	int				i;
+	static t_fb		w_byte[4] = {write_1_byte, write_2_bytes,
+								write_3_bytes, write_4_bytes};
 
 	i = 0;
-	if (wc < 0)
+	if (wc < 0 || (wc >= 0xd800 && wc <= 0xDFFF) || wc > 0x10FFFF)
 		return (0);
 	if (wc < 0x100 && MB_CUR_MAX == 1)
 	{
@@ -96,11 +98,11 @@ int		ft_print_wchar(wchar_t wc, t_buff *buff, t_param *param)
 	while (i < 4)
 	{
 		if (wc < byte[i] && (int)MB_CUR_MAX > i)
-			{
-				w_byte[i](buff, wc);
-				param->precision -= i + 1;
-				return (1);
-			}
+		{
+			w_byte[i](buff, wc);
+			param->precision -= i + 1;
+			return (1);
+		}
 		i++;
 	}
 	return (0);

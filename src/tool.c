@@ -6,13 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 16:44:19 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 16:17:01 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;
 
@@ -21,7 +21,7 @@ void		ft_bzero(void *s, size_t n)
 		((unsigned char *)s)[i++] = 0;
 }
 
-size_t		ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t i;
 
@@ -31,7 +31,7 @@ size_t		ft_strlen(const char *s)
 	return (i);
 }
 
-size_t		ft_strlen_wchar(wchar_t *s)
+size_t	ft_strlen_wchar(wchar_t *s)
 {
 	size_t i;
 
@@ -58,7 +58,7 @@ int		ft_strlen_wchar_c(wchar_t s)
 	return (i);
 }
 
-int abs_value(int i)
+int		abs_value(int i)
 {
 	if (i < 0)
 		return (-i);

@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 14:08:11 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/28 15:43:17 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 10:24:35 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	initialise_padding(t_padding *padding, int size, t_param *param)
 	if (padding->precision > 0)
 		padding->width -= padding->precision;
 	padding->arg_zero = FALSE;
-
 }
 
 void	padding_struct(t_padding *padding, t_param *param)
@@ -38,7 +37,7 @@ void	padding_struct(t_padding *padding, t_param *param)
 	}
 	else
 	{
-		if (NUMBER_SIGNED(param->conver))
+		if (is_signed(param->conver))
 		{
 			if (padding->sign == -1 || param->flag[e_flag_more] == 1
 			|| param->flag[e_flag_space] == 1)
@@ -74,21 +73,21 @@ void	padding_before(t_param *param, t_padding padding, t_buff *buff)
 
 void	print_sign_hastag(t_param *param, t_buff *buff, t_padding padding)
 {
-		if (NUMBER_SIGNED(param->conver) == 1)
-		{
-			if (padding.sign == -1)
-				add_buffer(buff, '-');
-			else if (param->flag[e_flag_more] && padding.sign == 0)
-				add_buffer(buff, '+');
-			else if (param->flag[e_flag_space] && padding.sign == 0)
-				add_buffer(buff, ' ');
-		}
-		if (param->flag[e_flag_hastag] == 1)
-		{
-			add_buffer(buff, '0');
-			if (param->conver == 'x' || param->conver == 'X')
-				add_buffer(buff, param->conver);
-		}
+	if (is_signed(param->conver) == 1)
+	{
+		if (padding.sign == -1)
+			add_buffer(buff, '-');
+		else if (param->flag[e_flag_more] && padding.sign == 0)
+			add_buffer(buff, '+');
+		else if (param->flag[e_flag_space] && padding.sign == 0)
+			add_buffer(buff, ' ');
+	}
+	if (param->flag[e_flag_hastag] == 1)
+	{
+		add_buffer(buff, '0');
+		if (param->conver == 'x' || param->conver == 'X')
+			add_buffer(buff, param->conver);
+	}
 }
 
 void	padding_before_str(t_param *param, int len, t_buff *buff)

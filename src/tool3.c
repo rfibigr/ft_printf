@@ -1,36 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   tool3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 14:00:47 by rfibigr          ###   ########.fr       */
+/*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
+/*   Updated: 2018/09/10 16:10:58 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int		is_signed(char a)
 {
-	t_buff		buff;
-	t_param		param;
-	char		*str_cp;
-	va_list		ap;
-
-	str_cp = (char*)str;
-	initial_buff(&buff);
-	va_start(ap, str);
-	while (*str_cp != '\0')
-	{
-		if (!(read_str(&str_cp, &buff, &param)))
-			return (-1);
-		if (param.conver != 0)
-			if (!(assign_function(&ap, &param, &buff)))
-				return (-1);
-	}
-	write_buffer(&buff, buff.i);
-	va_end(ap);
-	return (buff.size);
+	if (a == 'd' || a == 'i')
+		return (1);
+	return (0);
 }

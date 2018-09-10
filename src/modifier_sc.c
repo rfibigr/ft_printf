@@ -6,18 +6,18 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/29 12:09:40 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 14:05:07 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		print_str(va_list ap, t_param *param, t_buff *buff)
+int		print_str(va_list *ap, t_param *param, t_buff *buff)
 {
-	char 	*str;
+	char	*str;
 	int		len;
 
-	str = (char *)va_arg(ap, char*);
+	str = (char *)va_arg(*ap, char*);
 	len = 6;
 	if (str != NULL)
 		len = ft_strlen(str);
@@ -38,7 +38,7 @@ int		print_str(va_list ap, t_param *param, t_buff *buff)
 	return (1);
 }
 
-int		print_char(va_list ap, t_param *param, t_buff *buff)
+int		print_char(va_list *ap, t_param *param, t_buff *buff)
 {
 	if (param->flag[e_flag_less] == 0)
 	{
@@ -47,7 +47,7 @@ int		print_char(va_list ap, t_param *param, t_buff *buff)
 		else
 			ft_print_charact(param->width - 1, buff, ' ');
 	}
-	ft_print_charact(1, buff, (char)va_arg(ap, int));
+	ft_print_charact(1, buff, (char)va_arg(*ap, int));
 	if (param->flag[e_flag_less])
 		ft_print_charact(param->width - 1, buff, ' ');
 	return (1);

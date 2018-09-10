@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_str.c                                         :+:      :+:    :+:   */
+/*   str_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/29 12:16:18 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 10:53:46 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,15 +43,15 @@ int		read_str(char **str, t_buff *buff, t_param *param)
 
 int		verif_form(char **str, t_param *param, t_buff *buff)
 {
-	if (FLAG(**str))
+	if (is_flag(**str))
 		verif_flag(str, param);
-	if (WIDTH(**str))
-		verif_min_width(str, param);
-	if (PRECISION(**str))
+	if (is_number(**str))
+		verit_fmin_width(str, param);
+	if (is_precision(**str))
 		verif_precision(str, param);
-	if (LMODIFIER(**str))
+	if (is_lmodifier(**str))
 		verif_lmodifier(str, param);
-	if (CONVERSION(**str))
+	if (is_conversion(**str))
 		verif_conversion(str, param);
 	else
 	{

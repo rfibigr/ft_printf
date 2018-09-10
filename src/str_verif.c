@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verif_form.c                                       :+:      :+:    :+:   */
+/*   str_verif.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:35:49 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/08/29 17:00:48 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/10 10:31:16 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	verif_flag(char **str, t_param *param)
 {
-	while (FLAG(**str))
+	while (is_flag(**str))
 	{
 		if (**str == '#')
 			param->flag[e_flag_hastag] = TRUE;
@@ -34,11 +34,11 @@ void	verif_flag(char **str, t_param *param)
 		param->flag[e_flag_space] = FALSE;
 }
 
-void	verif_min_width(char **str, t_param *param)
+void	verit_fmin_width(char **str, t_param *param)
 {
-	while (WIDTH(**str))
+	while (is_number(**str))
 	{
-		param->width = param->width * 10 + ((**str - 48)%10);
+		param->width = param->width * 10 + ((**str - 48) % 10);
 		*str = *str + 1;
 	}
 }
@@ -47,9 +47,9 @@ void	verif_precision(char **str, t_param *param)
 {
 	*str = *str + 1;
 	param->precision = 0;
-	while (WIDTH(**str))
+	while (is_number(**str))
 	{
-		param->precision = param->precision * 10 + ((**str - 48)%10);
+		param->precision = param->precision * 10 + ((**str - 48) % 10);
 		*str = *str + 1;
 	}
 }
