@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:32:04 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 14:00:47 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 17:01:13 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_printf(const char *str, ...)
 	char		*str_cp;
 	va_list		ap;
 
+	if (str == NULL)
+		return (0);
 	str_cp = (char*)str;
 	initial_buff(&buff);
 	va_start(ap, str);

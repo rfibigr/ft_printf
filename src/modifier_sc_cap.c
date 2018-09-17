@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:40:53 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/11 09:29:02 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 17:05:27 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		print_strwchar(va_list *ap, t_param *param, t_buff *buff)
 
 	str = (wchar_t *)va_arg(*ap, wchar_t*);
 	len = 6;
-	if (str != NULL)
+	if (str != NULL && param->precision != 0)
 		len = ft_strlen_wchar(str);
 	if (param->precision > 0 && str != NULL)
 		param->precision = real_precision(str, param->precision);
