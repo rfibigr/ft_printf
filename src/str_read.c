@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:29:59 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 10:53:46 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 11:39:02 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,4 @@ void	initial_buff(t_buff *buff)
 {
 	buff->size = 0;
 	buff->i = 0;
-	ft_bzero(buff->str, BUFF_SIZE);
 }

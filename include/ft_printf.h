@@ -6,21 +6,21 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/30 12:34:06 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 17:38:25 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 11:41:50 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft.h"
 # include <stdarg.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <inttypes.h>
 # include <stdio.h>
 # include <math.h>
 
-# define BUFF_SIZE 60
+# define BUFF_SIZE 80
 # define FLAG_NUMBER 5
 # define TRUE 1
 # define FALSE 0
@@ -188,9 +188,8 @@ void				print_param(t_param *param);
 void				print_padding(t_padding *padding);
 
 char				*ft_strdup(const char *s);
-size_t				ft_strlen(const char *s);
+size_t				ft_strlen_char(const char *s);
 void				ft_strcp(char *copy, const char *src);
-void				ft_bzero(void *s, size_t n);
 int					abs_value(int i);
 
 int					is_flag(char a);

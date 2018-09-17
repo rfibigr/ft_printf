@@ -6,7 +6,7 @@
 #    By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/01 16:20:20 by rfibigr           #+#    #+#              #
-#    Updated: 2018/09/10 11:13:20 by rfibigr          ###   ########.fr        #
+#    Updated: 2018/09/17 11:42:12 by rfibigr          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 .PHONY: all, clean, fclean, re
@@ -43,8 +43,7 @@ SRC =	ft_printf.c \
 		print_byte.c \
 		write_buffer.c \
 		tool.c \
-		tool2.c \
-		tool3.c 
+		tool2.c 
 
 
 OBJ =		$(SRC:.c=.o)

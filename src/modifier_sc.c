@@ -20,7 +20,7 @@ int		print_str(va_list *ap, t_param *param, t_buff *buff)
 	str = (char *)va_arg(*ap, char*);
 	len = 6;
 	if (str != NULL)
-		len = ft_strlen(str);
+		len = ft_strlen_char(str);
 	padding_before_str(param, len, buff);
 	if (str == NULL)
 		ft_print_str(buff, "(null)\0", param->precision);

@@ -6,22 +6,13 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/29 15:01:27 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/10 16:17:01 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 11:39:23 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_bzero(void *s, size_t n)
-{
-	size_t			i;
-
-	i = 0;
-	while (i < n)
-		((unsigned char *)s)[i++] = 0;
-}
-
-size_t	ft_strlen(const char *s)
+size_t	ft_strlen_char(const char *s)
 {
 	size_t i;
 
@@ -63,4 +54,11 @@ int		abs_value(int i)
 	if (i < 0)
 		return (-i);
 	return (i);
+}
+
+int		is_signed(char a)
+{
+	if (a == 'd' || a == 'i')
+		return (1);
+	return (0);
 }
