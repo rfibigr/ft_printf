@@ -6,7 +6,7 @@
 /*   By: rfibigr <rfibigr@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/13 11:39:03 by rfibigr           #+#    #+#             */
-/*   Updated: 2018/09/17 17:05:16 by rfibigr          ###   ########.fr       */
+/*   Updated: 2018/09/17 17:57:35 by rfibigr          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		print_str(va_list *ap, t_param *param, t_buff *buff)
 	padding_before_str(param, len, buff);
 	if (str == NULL)
 		ft_print_str(buff, "(null)\0", param->precision);
-	else
+	else if (param->precision != 0)
 	{
 		while (*str && param->precision > 0)
 		{
